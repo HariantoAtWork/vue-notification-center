@@ -1,14 +1,31 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Notification from './Notification.vue'
+
+// Mock the v-inject-elements directive
+const mockDirective = {
+  mounted: () => {}, // Empty implementation for testing
+}
 
 describe('Notification Component', () => {
   it('renders properly', () => {
     const wrapper = mount(Notification, {
       props: {
-        title: 'Test Title',
-        message: 'Test Message',
-        type: 'info',
+        notification: {
+          title: 'Test Title',
+          message: 'Test Message',
+          type: 'info',
+          elements: [], // Empty array to avoid forEach error
+          options: {
+            showCloseButton: true,
+            canClose: true,
+          },
+        },
+      },
+      global: {
+        directives: {
+          'inject-elements': mockDirective,
+        },
       },
     })
 
@@ -17,21 +34,33 @@ describe('Notification Component', () => {
   })
 
   it('emits close event when close button is clicked', async () => {
+    const destroyMock = vi.fn()
+
     const wrapper = mount(Notification, {
       props: {
-        title: 'Test Title',
-        message: 'Test Message',
-        type: 'info',
-        options: {
-          canClose: true,
+        notification: {
+          title: 'Test Title',
+          message: 'Test Message',
+          type: 'info',
+          elements: [], // Empty array to avoid forEach error
+          options: {
+            showCloseButton: true,
+            canClose: true,
+          },
+          destroy: destroyMock,
+        },
+      },
+      global: {
+        directives: {
+          'inject-elements': mockDirective,
         },
       },
     })
 
-    const closeButton = wrapper.find('.notification-close-button')
+    const closeButton = wrapper.find('.notification__close-button')
     if (closeButton.exists()) {
       await closeButton.trigger('click')
-      expect(wrapper.emitted('close')).toBeTruthy()
+      expect(destroyMock).toHaveBeenCalled()
     }
   })
 })
