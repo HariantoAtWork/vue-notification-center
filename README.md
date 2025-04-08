@@ -62,7 +62,7 @@ app.mount('#app')
 
 ### Nuxt 3 Setup
 
-Create a plugin file `plugins/notification-center.ts`:
+Create a plugin file `plugins/notification-center.client.ts`:
 ```typescript
 import { defineNuxtPlugin } from '#app'
 import NotificationCenter from '@harianto/vue-notification-center'
