@@ -1,10 +1,17 @@
 {
-  "name": "vue-notification-center",
-  "version": "1.0.0",
+  "name": "@harianto/vue-notification-center",
+  "version": "0.0.1",
   "description": "Vue NotificationCenter",
-  "main": "index.js",
+  "main": "dist/vue-notification-center.umd.js",
+  "module": "dist/vue-notification-center.es.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -12,7 +19,9 @@
   },
   "keywords": [
     "vue",
-    "plugin"
+    "plugin",
+    "notification",
+    "vue3"
   ],
   "author": "Harianto van Insulinde",
   "license": "CC-BY-4.0",
@@ -20,6 +29,9 @@
     "url": "https://github.com/HariantoAtWork/vue-notification-center/issues"
   },
   "homepage": "https://github.com/HariantoAtWork/vue-notification-center#readme",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "dependencies": {
     "deepmerge": "^4.3.1",
     "uuid": "^8.3.2"
@@ -31,6 +43,10 @@
     "@rollup/plugin-terser": "^0.4.0",
     "rollup": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-vue": "^6.0.0"
+    "rollup-plugin-vue": "^6.0.0",
+    "vue": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
