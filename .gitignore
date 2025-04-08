@@ -6,3 +6,5 @@ node_modules/
 .env.local
 .env.development.local
 .env.test.local
+.pnpm-store/
+pnpm-lock.yaml
