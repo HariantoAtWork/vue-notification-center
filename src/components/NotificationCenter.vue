@@ -11,9 +11,10 @@
         class="notification-center__notification-list notification-center__notification-list--top"
       >
         <Notification
-          v-for="notification in mobileNotification"
+          v-for="notification in showNotifications"
           :key="notification.uuid"
           class="fade-list-item notification-center__notification u-events--all"
+          :class="{ notification__slim: isMobile }"
           :notification="notification"
         />
       </transition-group>
@@ -103,52 +104,28 @@
 </template>
 
 <script>
-import { isMobile } from '@helpers/utility';
-const vDetectMobileView = {
-  bind(el, binding) {
-    const { value: callback } = binding;
-    const resizeEvent = () => {
-      callback(isMobile());
-    };
-    resizeEvent();
-    el.resizeEvent = resizeEvent;
-  },
-  inserted(el) {
-    window.addEventListener('resize', el.resizeEvent);
-  },
-  unbind(el) {
-    window.removeEventListener('resize', el.resizeEvent);
-  },
-};
-import Notification from './Notification';
+import Notification from './Notification.vue'
 
-import notificationCenter from '@observables/notificationCenter';
+import vDetectMobileView from '../directives/v-detect-mobile-view'
+import notificationCenter from '../notificationCenter'
+
 const {
   state: { notifications },
   methods: { addNotification },
-  notificationPosition,
-} = notificationCenter;
-
-import notificationHelper from '@helpers/notification';
-const { echoUserNotification } = notificationHelper;
+  defaults: { notificationPosition }
+} = notificationCenter
 
 export default {
   name: 'NotificationCenter',
   directives: {
-    detectMobileView: vDetectMobileView,
+    detectMobileView: vDetectMobileView
   },
   components: {
-    Notification,
-  },
-  props: {
-    echoNotifications: {
-      type: Array,
-      default: () => [],
-    },
+    Notification
   },
   data: () => ({
     isMobile: false,
-    notifications,
+    notifications
   }),
   computed: {
     showNotifications() {
@@ -156,83 +133,73 @@ export default {
         notification =>
           notification.options?.show &&
           !notification.meta?.displayOnAlertCenterOnly
-      );
-    },
-    mobileNotification() {
-      return this.showNotifications
-        .slice()
-        .reverse()
-        .map(notification => {
-          notification.options.elementClass = 'notification__slim';
-          return notification;
-        });
+      )
     },
     topNotification() {
       const positions = [
         notificationPosition.TOPLEFT,
         notificationPosition.TOPCENTER,
-        notificationPosition.TOPRIGHT,
-      ];
+        notificationPosition.TOPRIGHT
+      ]
       return this.showNotifications
         .slice()
         .reverse()
-        .filter(notification => positions.includes(notification.position));
+        .filter(notification => positions.includes(notification.position))
     },
     topLeftNotification() {
       return this.topNotification.filter(
         notification => notification.position === notificationPosition.TOPLEFT
-      );
+      )
     },
     topCenterNotification() {
       return this.topNotification.filter(
         notification => notification.position === notificationPosition.TOPCENTER
-      );
+      )
     },
     topRightNotification() {
       return this.topNotification.filter(
         notification => notification.position === notificationPosition.TOPRIGHT
-      );
+      )
     },
     bottomNotification() {
       const positions = [
         notificationPosition.BOTTOMLEFT,
         notificationPosition.BOTTOMCENTER,
-        notificationPosition.BOTTOMRIGHT,
-      ];
+        notificationPosition.BOTTOMRIGHT
+      ]
       return this.showNotifications.filter(notification =>
         positions.includes(notification.position)
-      );
+      )
     },
     bottomLeftNotification() {
       return this.bottomNotification.filter(
         notification =>
           notification.position === notificationPosition.BOTTOMLEFT
-      );
+      )
     },
     bottomCenterNotification() {
       return this.bottomNotification.filter(
         notification =>
           notification.position === notificationPosition.BOTTOMCENTER
-      );
+      )
     },
     bottomRightNotification() {
       return this.bottomNotification.filter(
         notification =>
           notification.position === notificationPosition.BOTTOMRIGHT
-      );
-    },
+      )
+    }
   },
   // Vue LifeCycle Hooks
-  created() {
-    this.echoNotifications.forEach(echoUserNotification);
-  },
   methods: {
     addNotification,
     setMobileView(bool) {
-      this.isMobile = bool;
-    },
-  },
-};
+      this.isMobile = bool
+    }
+  }
+}
+
+export { addNotification }
 </script>
 
 <style scoped lang="scss">

@@ -23,44 +23,44 @@
 </template>
 
 <script>
-import Notification from './Notification';
+import Notification from './Notification.vue'
 
-import notificationCenter from '@observables/notificationCenter';
-const { state } = notificationCenter;
+import notificationCenter from '../notificationCenter'
+const { state } = notificationCenter
 
 export default {
   name: 'AlertCenter',
   components: {
-    Notification,
+    Notification
   },
   computed: {
     notifications: () => state.notifications,
     showNotifications() {
       return this.notifications.filter(
         notification => notification.options?.show
-      );
+      )
     },
     alertNotification() {
       return this.showNotifications.filter(
         notification => notification.meta?.displayOnAlertCenterOnly
-      );
-    },
+      )
+    }
   },
   watch: {
     alertNotification(value, oldValue) {
       if (value.length > oldValue.length) {
-        $(this.$el).modal('show');
+        $(this.$el).modal('show')
       } else if (!value.length) {
-        this.onCloseSelf();
+        this.onCloseSelf()
       }
-    },
+    }
   },
   methods: {
     onCloseSelf() {
-      $(this.$el).modal('hide');
-    },
-  },
-};
+      $(this.$el).modal('hide')
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

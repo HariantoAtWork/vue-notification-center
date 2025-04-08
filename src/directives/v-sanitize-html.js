@@ -1,14 +1,14 @@
-import sanitizeHtml from 'sanitize-html';
+import sanitizeHtml from 'sanitize-html'
 
 export default {
   // Vue Hook Functions
-  inserted(el, binding) {
-    const { value } = binding;
+  mounted(el, binding) {
+    const { value } = binding
     const options = {
       allowedClasses: {
-        '*': ['*'],
-      },
-    };
-    el.innerHTML = sanitizeHtml(value, options);
-  },
-};
+        '*': ['*']
+      }
+    }
+    el.innerHTML = sanitizeHtml(value, options)
+  }
+}

@@ -1,9 +1,28 @@
-import notificationCenter from './observables/notificationCenter'
-const plugin = {
-    install(Vue, options = {}) {
-        Vue.$notificationCenter = notificationCenter
-        Vue.prototype.$notificationCenter = notificationCenter
-    }
-}
+// plugins/NotificationCenter/index.js
+import Notification from './components/Notification.vue'
+import NotificationCenter from './components/NotificationCenter.vue'
+import notificationCenter from './notificationCenter'
+import './scss/index.scss'
 
-export default plugin
+export const provide = {
+	nc: notificationCenter.methods
+}
+export const component = {
+	NotificationCenter
+}
+export const plugin = {
+	install(vueApp) {
+		vueApp.component('NotificationCenter', NotificationCenter)
+		vueApp.provide('nc', notificationCenter.methods)
+		vueApp.config.globalProperties.$notify =
+			notificationCenter.methods.addNotification
+	}
+}
+export default {
+	...plugin,
+	Notification,
+	NotificationCenter,
+	component,
+	notificationCenter,
+	provide
+}

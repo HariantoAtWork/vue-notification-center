@@ -11,74 +11,91 @@
           class="spinner"
           :color="colorSpinner"
         />
-        <i
-          v-if="showType('success')"
-          class="material-icons"
-        >check_circle</i>
-        <i
-          v-if="showType('info')"
-          class="material-icons"
-        >information</i>
+        <i v-if="showType('success')" class="material-icons">check_circle</i>
+        <i v-if="showType('info')" class="material-icons">information</i>
         <i
           v-if="showType('warning') || showType('danger')"
           class="material-icons"
-        >warning_outline</i>
+          >warning_outline</i
+        >
       </aside>
-      <div
-        v-if="title || message"
-        class="notification__message-container"
-      >
-        <h1
-          v-if="title"
-          class="notification__title"
-          v-text="title"
-        />
+      <div v-if="title || message" class="notification__message-container">
+        <h1 v-if="title" class="notification__title" v-text="title" />
         <div
           v-if="message"
           v-sanitize-html="message"
           class="notification__message"
         />
+        <div v-if="redirect?.url" class="notification__redirect">
+          <a :href="redirect.url" :target="target">
+            {{ redirect.text }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Spinner from '@components/Spinner';
-import transMixin from '@mixins/trans';
-import sanitizeHtml from '@directives/v-sanitize-html';
+import SanitizeHtml from '../directives/v-sanitize-html'
+import eventEventBus from '../lib/createEventBus'
+import Spinner from './Spinner.vue'
 
 export default {
-  name: 'NotificationSpinner',
+  name: 'NotificationTypes',
   directives: {
-    sanitizeHtml,
+    SanitizeHtml
   },
   components: {
-    Spinner,
+    Spinner
   },
-  mixins: [transMixin],
+  // inject: ['i18n'],
   props: {
     type: {
       type: String,
-      default: 'default',
+      default: 'default'
     },
     colorSpinner: {
       type: String,
-      default: 'black',
+      default: 'black'
     },
     title: {
       type: String,
-      default: null,
+      default: null
     },
     message: {
       type: String,
-      default: null,
+      default: null
     },
+    redirect: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  computed: {
+    target() {
+      return this.redirect?.opens_in_new_tab ? '_blank' : '_self'
+    }
   },
   methods: {
     showType(type) {
-      return this.type === type;
-    },
+      return this.type === type
+    }
   },
-};
+  // LifeCycle Hooks
+  beforeCreate() {
+    const {
+      $on: $$on,
+      $off: $$off,
+      $emit: $$emit,
+      $destroy: $$destroy
+    } = eventEventBus()
+    Object.assign(this, {
+      $$on,
+      $$off,
+      $$emit,
+      $$destroy
+    })
+  }
+}
 </script>

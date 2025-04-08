@@ -1,5 +1,3 @@
-import dayjs from "@helpers/dayjs"
-
 // Factory: createTimer
 const createTimer = function (data) {
   const state = {
@@ -9,8 +7,7 @@ const createTimer = function (data) {
     timeDuration: null,
     timeDiff: null,
     percent: 0,
-    repeat: false,
-    ...data,
+    ...data
   }
 
   const methods = {
@@ -24,12 +21,6 @@ const createTimer = function (data) {
         state.timeoutID = setTimeout(methods.timerPercent, 1)
       } else {
         methods.onEndTimer()
-        if (state.repeat) {
-          state.timeStart = dayjs(state.timeStart)
-            .add(state.timeDuration, "ms")
-            .toDate()
-          methods.startTimer()
-        }
       }
       return percent
     },
@@ -48,7 +39,7 @@ const createTimer = function (data) {
     onStartTimer() {
       const hasOnStartTimer = Object.prototype.hasOwnProperty.call(
         data,
-        "onStartTimer"
+        'onStartTimer'
       )
       if (hasOnStartTimer) data.onStartTimer()
     },
@@ -56,10 +47,10 @@ const createTimer = function (data) {
       methods.stopTimer()
       const hasOnEndTimer = Object.prototype.hasOwnProperty.call(
         data,
-        "onEndTimer"
+        'onEndTimer'
       )
       if (hasOnEndTimer) data.onEndTimer()
-    },
+    }
   }
 
   return methods
