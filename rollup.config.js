@@ -21,9 +21,12 @@ const banner = `/*!
   * Released under the ${pkg.license} License
   */`
 
+// List of external dependencies
+const external = ['vue', 'vue/dist/vue.esm-bundler', /^vue\/.*/, /^@vue\/.*/]
+
 export default {
   input: 'src/index.js',
-  external: ['vue'],
+  external,
   output: [
     {
       file: pkg.main,
@@ -32,6 +35,7 @@ export default {
       exports: 'named',
       globals: {
         vue: 'Vue',
+        'vue/dist/vue.esm-bundler': 'Vue',
       },
       banner,
       sourcemap: true,
@@ -48,6 +52,9 @@ export default {
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
       preventAssignment: true,
+      values: {
+        'vue/dist/vue.esm-bundler': 'vue',
+      },
     }),
     vuePlugin({
       css: true,
@@ -66,8 +73,12 @@ export default {
       browser: true,
       preferBuiltins: false,
       extensions: ['.js', '.vue'],
+      mainFields: ['module', 'main'],
     }),
-    commonjs(),
+    commonjs({
+      include: /node_modules/,
+      extensions: ['.js', '.vue'],
+    }),
     terser({
       format: {
         comments: false,
