@@ -1,6 +1,6 @@
 # Vue Notification Center
 
-A flexible and feature-rich notification system for Vue.js applications. This library provides a simple way to manage and display notifications with various customisation options.
+A flexible and feature-rich notification system for Vue.js and Nuxt 3 applications. This library provides a simple way to manage and display notifications with various customisation options.
 
 ## Features
 
@@ -11,27 +11,58 @@ A flexible and feature-rich notification system for Vue.js applications. This li
 - 🔄 Reactive state management
 - 🎮 Event-driven architecture
 - 📦 Lightweight and easy to integrate
+- ⚡️ Nuxt 3 ready with auto-imports support
 
 ## Installation
 
+### Vue 3
 ```bash
-npm install vue-notification-center
-# or
-yarn add vue-notification-center
+# Using npm
+npm install @harianto/vue-notification-center
+
+# Using yarn
+yarn add @harianto/vue-notification-center
+
+# Using pnpm
+pnpm add @harianto/vue-notification-center
+```
+
+### Nuxt 3
+```bash
+# Using npm
+npm install @harianto/vue-notification-center
+
+# Using yarn
+yarn add @harianto/vue-notification-center
+
+# Using pnpm
+pnpm add @harianto/vue-notification-center
 ```
 
 ## Usage
 
-### Basic Setup
+### Vue 3 Setup
 
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
-import NotificationCenter from 'vue-notification-center'
+import NotificationCenter from '@harianto/vue-notification-center'
 
 const app = createApp(App)
 app.use(NotificationCenter)
 app.mount('#app')
+```
+
+### Nuxt 3 Setup
+
+Create a plugin file `plugins/notification-center.ts`:
+```typescript
+import { defineNuxtPlugin } from '#app'
+import NotificationCenter from '@harianto/vue-notification-center'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(NotificationCenter)
+})
 ```
 
 ### Add the Component
@@ -44,6 +75,7 @@ app.mount('#app')
 
 ### Show Notifications
 
+#### Vue 3
 ```javascript
 // Using the global method
 this.$notify({
@@ -55,6 +87,25 @@ this.$notify({
     timeDuration: 3000, // 3 seconds
     canClose: true
   }
+})
+
+// Using the provide/inject API
+const { nc } = inject('nc')
+nc.addNotification({
+  title: 'Info',
+  message: 'This is an info message',
+  type: 'info'
+})
+```
+
+#### Nuxt 3
+```javascript
+// Using the global method (auto-imported)
+const { $notify } = useNuxtApp()
+$notify({
+  title: 'Success!',
+  message: 'Operation completed successfully',
+  type: 'success'
 })
 
 // Using the provide/inject API
@@ -131,4 +182,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the CC-BY-4.0 License - see the LICENSE file for details.
