@@ -4,9 +4,28 @@ This document provides guidelines and instructions for developing the Vue Notifi
 
 ## Prerequisites
 
-- Node.js >= 16.0.0
-- PNPM >= 8.0.0
+- Node.js >= 16.0.0 (Tested with v20.18.3)
+- PNPM >= 8.0.0 (Tested with v8.15.4)
 - Git
+
+## Dependencies
+
+### Core Dependencies
+- Vue.js: ^3.0.0 (peer dependency)
+- dayjs: ^1.11.13
+- deepmerge: ^4.3.1
+- sass: ^1.56.2
+- uuid: ^11.1.0
+
+### Development Dependencies
+- @rollup/plugin-commonjs: ^25.0.0
+- @rollup/plugin-node-resolve: ^15.0.0
+- @rollup/plugin-replace: ^6.0.2
+- @rollup/plugin-terser: ^0.4.0
+- rollup: ^4.0.0
+- rollup-plugin-postcss: ^4.0.2
+- rollup-plugin-vue: ^6.0.0
+- vue: ^3.5.13 (for development)
 
 ## Getting Started
 
