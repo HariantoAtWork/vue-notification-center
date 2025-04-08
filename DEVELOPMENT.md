@@ -166,6 +166,131 @@ This project follows [Semantic Versioning](https://semver.org/):
 - Minor version (x.1.x): New features, backward compatible
 - Patch version (x.x.1): Bug fixes, backward compatible
 
+### Version Update Workflow
+
+#### Patch Version (x.x.1)
+
+For bug fixes and minor improvements that don't add new features:
+
+1. Make your changes and commit them:
+   ```bash
+   git commit -m "fix: description of the bug fix"
+   ```
+
+2. Update the version in package.json:
+   ```bash
+   pnpm version patch
+   ```
+   This will automatically increment the patch version (e.g., 1.0.0 → 1.0.1)
+
+3. Build the package:
+   ```bash
+   pnpm run build
+   ```
+
+4. Publish to npm:
+   ```bash
+   npm publish
+   ```
+
+5. Create and push a Git tag:
+   ```bash
+   git tag -a v1.0.1 -m "Release v1.0.1 - Bug fixes and improvements"
+   git push main v1.0.1
+   ```
+
+#### Minor Version (x.1.x)
+
+For new features that are backward compatible:
+
+1. Make your changes and commit them:
+   ```bash
+   git commit -m "feat: description of the new feature"
+   ```
+
+2. Update the version in package.json:
+   ```bash
+   pnpm version minor
+   ```
+   This will automatically increment the minor version (e.g., 1.0.1 → 1.1.0)
+
+3. Build the package:
+   ```bash
+   pnpm run build
+   ```
+
+4. Publish to npm:
+   ```bash
+   npm publish
+   ```
+
+5. Create and push a Git tag:
+   ```bash
+   git tag -a v1.1.0 -m "Release v1.1.0 - New features added"
+   git push main v1.1.0
+   ```
+
+#### Major Version (1.x.x)
+
+For breaking changes that are not backward compatible:
+
+1. Make your changes and commit them:
+   ```bash
+   git commit -m "feat!: description of the breaking change"
+   ```
+
+2. Update the version in package.json:
+   ```bash
+   pnpm version major
+   ```
+   This will automatically increment the major version (e.g., 1.1.0 → 2.0.0)
+
+3. Build the package:
+   ```bash
+   pnpm run build
+   ```
+
+4. Publish to npm:
+   ```bash
+   npm publish
+   ```
+
+5. Create and push a Git tag:
+   ```bash
+   git tag -a v2.0.0 -m "Release v2.0.0 - Breaking changes"
+   git push main v2.0.0
+   ```
+
+### Pre-release Versions
+
+For testing before a full release:
+
+1. Create a pre-release version:
+   ```bash
+   pnpm version prerelease --preid=beta
+   ```
+   This will create a version like 1.0.0-beta.0
+
+2. Build and publish:
+   ```bash
+   pnpm run build
+   npm publish --tag beta
+   ```
+
+3. Create and push a Git tag:
+   ```bash
+   git tag -a v1.0.0-beta.0 -m "Release v1.0.0-beta.0 - Beta release"
+   git push main v1.0.0-beta.0
+   ```
+
+### Version Management Tips
+
+- Always update the CHANGELOG.md file with your changes
+- Use conventional commit messages (feat:, fix:, etc.)
+- Consider using a tool like `standard-version` to automate the versioning process
+- Test your package thoroughly before publishing
+- Consider using a CI/CD pipeline to automate the build and publish process
+
 ## Troubleshooting
 
 ### Common Issues
