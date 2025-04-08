@@ -1,9 +1,18 @@
 {
   "name": "@harianto/vue-notification-center",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Vue NotificationCenter",
-  "main": "dist/vue-notification-center.umd.js",
-  "module": "dist/vue-notification-center.es.js",
+  "type": "module",
+  "main": "./dist/vue-notification-center.umd.js",
+  "module": "./dist/vue-notification-center.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-notification-center.es.js",
+      "require": "./dist/vue-notification-center.umd.js",
+      "types": "./dist/vue-notification-center.d.ts"
+    },
+    "./dist/style.css": "./dist/vue-notification-center.css"
+  },
   "files": [
     "dist",
     "src"
@@ -21,7 +30,8 @@
     "vue",
     "plugin",
     "notification",
-    "vue3"
+    "vue3",
+    "nuxt3"
   ],
   "author": "Harianto van Insulinde",
   "license": "CC-BY-4.0",

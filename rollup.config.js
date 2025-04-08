@@ -4,8 +4,16 @@ import terser from '@rollup/plugin-terser'
 import vuePlugin from 'rollup-plugin-vue'
 import replace from '@rollup/plugin-replace'
 import postcss from 'rollup-plugin-postcss'
+import { readFileSync } from 'fs'
+import { fileURLToPath } from 'url'
+import { dirname, resolve as resolvePath } from 'path'
 
-const pkg = require('./package.json')
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const pkg = JSON.parse(
+  readFileSync(resolvePath(__dirname, './package.json'), 'utf8')
+)
 
 const banner = `/*!
   * ${pkg.name} v${pkg.version}
