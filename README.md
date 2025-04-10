@@ -4,7 +4,6 @@ A flexible and feature-rich notification system for Vue.js and Nuxt 3 applicatio
 
 ## Version Information
 
-- Package Version: 1.0.0
 - Vue.js: ^3.0.0 (peer dependency)
 - Node.js: >=16.0.0
 - PNPM: >=8.0.0
