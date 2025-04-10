@@ -88,6 +88,9 @@ export default {
       use: ['sass'], // Use SASS for processing
       minimize: true, // Minify the CSS
       sourceMap: true, // Generate source maps for CSS
+      config: {
+        path: './postcss.config.cjs',
+      },
     }),
 
     // Resolve node modules

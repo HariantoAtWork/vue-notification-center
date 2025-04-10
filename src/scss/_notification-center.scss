@@ -185,24 +185,33 @@
         margin: 0 auto;
     }
 
-    @function set-alert-icon-color( $color ) {
-        @return adjust-color( $color, $lightness: 15% );
+    @function set-alert-icon-color($color) {
+        // For CSS variables, we'll use a CSS filter instead of SCSS color adjustment
+        @if type-of($color) == 'string' and str-index($color, 'var(') {
+            @return $color;
+        } @else {
+            @return adjust-color($color, $lightness: 15%);
+        }
     }
 
     &--success {
-        background-color: set-alert-icon-color(var(--default-notification-aside-icon-success-color));
+        background-color: var(--default-notification-aside-icon-success-color);
+        filter: brightness(1.15);
     }
 
     &--info {
-        background-color: set-alert-icon-color(var(--default-notification-aside-icon-info-color));
+        background-color: var(--default-notification-aside-icon-info-color);
+        filter: brightness(1.15);
     }
 
     &--warning {
-        background-color: set-alert-icon-color(var(--default-notification-aside-icon-warning-color));
+        background-color: var(--default-notification-aside-icon-warning-color);
+        filter: brightness(1.15);
     }
 
     &--danger {
-        background-color: set-alert-icon-color(var(--default-notification-aside-icon-danger-color));
+        background-color: var(--default-notification-aside-icon-danger-color);
+        filter: brightness(1.15);
     }
 
     @media (max-width: 767.98px) {
