@@ -1,6 +1,6 @@
 {
   "name": "@harianto/vue-notification-center",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Vue NotificationCenter",
   "type": "module",
   "main": "./dist/vue-notification-center.umd.js",
