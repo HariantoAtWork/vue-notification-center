@@ -34,15 +34,12 @@
 </template>
 
 <script setup>
-import NC from '@notification-center/vue-notification-center.es.js'
-import '@notification-center/vue-notification-center.umd.css'
-
-const { notificationCenter } = NC
-console.log({ notificationCenter })
-const notify = notificationCenter.addNotification
+import { inject } from 'vue'
+import NC from '@vue-notification-center/vue-notification-center.es.js'
+const { notificationCenter: nc } = NC
 
 const showInfo = () => {
-  notify({
+  nc.addNotification({
     title: 'Info Notification',
     message: 'This is an info notification',
     type: 'info',
@@ -50,7 +47,7 @@ const showInfo = () => {
 }
 
 const showSuccess = () => {
-  notify({
+  nc.addNotification({
     title: 'Success Notification',
     message: 'This is a success notification',
     type: 'success',
@@ -58,7 +55,7 @@ const showSuccess = () => {
 }
 
 const showWarning = () => {
-  notify({
+  nc.addNotification({
     title: 'Warning Notification',
     message: 'This is a warning notification',
     type: 'warning',
@@ -66,7 +63,7 @@ const showWarning = () => {
 }
 
 const showError = () => {
-  notify({
+  nc.addNotification({
     title: 'Error Notification',
     message: 'This is an error notification',
     type: 'error',
@@ -74,21 +71,21 @@ const showError = () => {
 }
 
 const showCustomDuration = (duration) => {
-  notify({
+  nc.addNotification({
     title: 'Custom Duration',
     message: `This notification will ${
       duration === 0 ? 'not auto-close' : `close in ${duration / 1000} seconds`
     }`,
     type: 'info',
-    duration,
     options: {
+      timeDuration: duration,
       showCloseButton: true,
     },
   })
 }
 
 const showCustomPosition = (position) => {
-  notify({
+  nc.addNotification({
     title: 'Custom Position',
     message: `This notification appears at ${position}`,
     type: 'info',
