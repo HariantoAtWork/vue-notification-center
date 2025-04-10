@@ -1,62 +1,62 @@
 // ####### DEFAULT
 // NotificationCenter
-$notification-center_position: fixed !default;
-$notification-center_left: 0 !default;
-$notification-center_right: 0 !default;
-$notification-center_top: 0 !default;
-$notification-center_bottom: 0 !default;
-$notification-center_padding-left: unset !default;
-$notification-center_padding-right: unset !default;
-$notification-center_padding-top: unset !default;
-$notification-center_padding-bottom: unset !default;
+$notification-center_position: var(--notification-center-position);
+$notification-center_left: var(--notification-center-left);
+$notification-center_right: var(--notification-center-right);
+$notification-center_top: var(--notification-center-top);
+$notification-center_bottom: var(--notification-center-bottom);
+$notification-center_padding-left: var(--notification-center-padding-left);
+$notification-center_padding-right: var(--notification-center-padding-right);
+$notification-center_padding-top: var(--notification-center-padding-top);
+$notification-center_padding-bottom: var(--notification-center-padding-bottom);
 // NotificationCenter__NotificationList
-$notification-center-notification-list_position: absolute !default;
-$notification-center-notification-list_left: unset !default;
-$notification-center-notification-list_right: unset !default;
-$notification-center-notification-list_top: unset !default;
-$notification-center-notification-list_bottom: unset !default;
+$notification-center-notification-list_position: var(--notification-list-position);
+$notification-center-notification-list_left: var(--notification-list-left);
+$notification-center-notification-list_right: var(--notification-list-right);
+$notification-center-notification-list_top: var(--notification-list-top);
+$notification-center-notification-list_bottom: var(--notification-list-bottom);
 // NotificationCenter__NotificationList--top
-$notification-center-notification-list--top_left: 0 !default;
-$notification-center-notification-list--top_right: 0 !default;
-$notification-center-notification-list--top_top: 0 !default;
-$notification-center-notification-list--top_bottom: unset !default;
+$notification-center-notification-list--top_left: var(--notification-list-top-left);
+$notification-center-notification-list--top_right: var(--notification-list-top-right);
+$notification-center-notification-list--top_top: var(--notification-list-top-top);
+$notification-center-notification-list--top_bottom: var(--notification-list-top-bottom);
 // NotificationCenter__NotificationList--top-left
-$notification-center-notification-list--top-left_left: 0 !default;
-$notification-center-notification-list--top-left_right: unset !default;
-$notification-center-notification-list--top-left_top: 0 !default;
-$notification-center-notification-list--top-left_bottom: unset !default;
+$notification-center-notification-list--top-left_left: var(--notification-list-top-left-left);
+$notification-center-notification-list--top-left_right: var(--notification-list-top-left-right);
+$notification-center-notification-list--top-left_top: var(--notification-list-top-left-top);
+$notification-center-notification-list--top-left_bottom: var(--notification-list-top-left-bottom);
 // NotificationCenter__NotificationList--top-center
-$notification-center-notification-list--top-center_left: 50% !default;
-$notification-center-notification-list--top-center_transform: translateX(-50%) !default;
-$notification-center-notification-list--top-center_right: unset !default;
-$notification-center-notification-list--top-center_top: 0 !default;
-$notification-center-notification-list--top-center_bottom: unset !default;
+$notification-center-notification-list--top-center_left: var(--notification-list-top-center-left);
+$notification-center-notification-list--top-center_transform: var(--notification-list-top-center-transform);
+$notification-center-notification-list--top-center_right: var(--notification-list-top-center-right);
+$notification-center-notification-list--top-center_top: var(--notification-list-top-center-top);
+$notification-center-notification-list--top-center_bottom: var(--notification-list-top-center-bottom);
 // NotificationCenter__NotificationList--top-right
-$notification-center-notification-list--top-right_left: unset !default;
-$notification-center-notification-list--top-right_right: 0 !default;
-$notification-center-notification-list--top-right_top: 0 !default;
-$notification-center-notification-list--top-right_bottom: unset !default;
+$notification-center-notification-list--top-right_left: var(--notification-list-top-right-left);
+$notification-center-notification-list--top-right_right: var(--notification-list-top-right-right);
+$notification-center-notification-list--top-right_top: var(--notification-list-top-right-top);
+$notification-center-notification-list--top-right_bottom: var(--notification-list-top-right-bottom);
 // NotificationCenter__NotificationList--bottom
-$notification-center-notification-list--bottom_left: 0 !default;
-$notification-center-notification-list--bottom_right: 0 !default;
-$notification-center-notification-list--bottom_top: unset !default;
-$notification-center-notification-list--bottom_bottom: 0 !default;
+$notification-center-notification-list--bottom_left: var(--notification-list-bottom-left);
+$notification-center-notification-list--bottom_right: var(--notification-list-bottom-right);
+$notification-center-notification-list--bottom_top: var(--notification-list-bottom-top);
+$notification-center-notification-list--bottom_bottom: var(--notification-list-bottom-bottom);
 // NotificationCenter__NotificationList--bottom-left
-$notification-center-notification-list--bottom-left_left: 0 !default;
-$notification-center-notification-list--bottom-left_right: unset !default;
-$notification-center-notification-list--bottom-left_top: unset !default;
-$notification-center-notification-list--bottom-left_bottom: 0 !default;
+$notification-center-notification-list--bottom-left_left: var(--notification-list-bottom-left-left);
+$notification-center-notification-list--bottom-left_right: var(--notification-list-bottom-left-right);
+$notification-center-notification-list--bottom-left_top: var(--notification-list-bottom-left-top);
+$notification-center-notification-list--bottom-left_bottom: var(--notification-list-bottom-left-bottom);
 // NotificationCenter__NotificationList--bottom-center
-$notification-center-notification-list--bottom-center_left: 50% !default;
-$notification-center-notification-list--bottom-center_transform: translateX(-50%) !default;
-$notification-center-notification-list--bottom-center_right: unset !default;
-$notification-center-notification-list--bottom-center_top: unset !default;
-$notification-center-notification-list--bottom-center_bottom: 0 !default;
+$notification-center-notification-list--bottom-center_left: var(--notification-list-bottom-center-left);
+$notification-center-notification-list--bottom-center_transform: var(--notification-list-bottom-center-transform);
+$notification-center-notification-list--bottom-center_right: var(--notification-list-bottom-center-right);
+$notification-center-notification-list--bottom-center_top: var(--notification-list-bottom-center-top);
+$notification-center-notification-list--bottom-center_bottom: var(--notification-list-bottom-center-bottom);
 // NotificationCenter__NotificationList--bottom-right
-$notification-center-notification-list--bottom-right_left: unset !default;
-$notification-center-notification-list--bottom-right_right: 0 !default;
-$notification-center-notification-list--bottom-right_top: unset !default;
-$notification-center-notification-list--bottom-right_bottom: 0 !default;
+$notification-center-notification-list--bottom-right_left: var(--notification-list-bottom-right-left);
+$notification-center-notification-list--bottom-right_right: var(--notification-list-bottom-right-right);
+$notification-center-notification-list--bottom-right_top: var(--notification-list-bottom-right-top);
+$notification-center-notification-list--bottom-right_bottom: var(--notification-list-bottom-right-bottom);
 
 // Notification
 $notification_padding: 1.4em 1em !default;

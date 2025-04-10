@@ -1,0 +1,265 @@
+:root {
+    /* Colors */
+    --warning: orange;
+    --info: rgb(75, 75, 190);
+    --danger: #ff8888;
+    --success: #76e78e;
+
+    /* Bootstrap-like colors */
+    --bs-primary: #ffd600;
+    --bs-secondary: #000000;
+    --bs-tertiary: #008ff9;
+    --bs-quaternary: #666666;
+    --bs-light: #f2f2f2;
+    --bs-dark: #222222;
+    --bs-white: #ffffff;
+    --bs-black: #000000;
+
+    /* Theme colors */
+    --primary: var(--bs-primary);
+    --secondary: var(--bs-secondary);
+    --tertiary: var(--bs-tertiary);
+    --quaternary: var(--bs-quaternary);
+    --light: var(--bs-light);
+    --dark: var(--bs-dark);
+    --white: var(--bs-white);
+    --black: var(--bs-dark);
+
+    /* Status colors */
+    --gray-400: grey;
+    --upcoming: var(--gray-400);
+    --live: var(--primary);
+    --live-text-color: var(--black);
+    --finished: var(--gray-400);
+    --badge-online-color: var(--primary);
+    --badge-offline-color: #de4040;
+    --rank-color: #293133;
+
+    /* Notification Center Positioning */
+    --notification-center-position: fixed;
+    --notification-center-left: 0;
+    --notification-center-right: 0;
+    --notification-center-top: 0;
+    --notification-center-bottom: 0;
+    --notification-center-padding-left: unset;
+    --notification-center-padding-right: unset;
+    --notification-center-padding-top: unset;
+    --notification-center-padding-bottom: unset;
+
+    /* Notification List Positioning */
+    --notification-list-position: absolute;
+    --notification-list-left: unset;
+    --notification-list-right: unset;
+    --notification-list-top: unset;
+    --notification-list-bottom: unset;
+
+    /* Top Position Variants */
+    --notification-list-top-left: 0;
+    --notification-list-top-right: 0;
+    --notification-list-top-top: 0;
+    --notification-list-top-bottom: unset;
+
+    /* Top Left Position */
+    --notification-list-top-left-left: 0;
+    --notification-list-top-left-right: unset;
+    --notification-list-top-left-top: 0;
+    --notification-list-top-left-bottom: unset;
+
+    /* Top Center Position */
+    --notification-list-top-center-left: 50%;
+    --notification-list-top-center-transform: translateX(-50%);
+    --notification-list-top-center-right: unset;
+    --notification-list-top-center-top: 0;
+    --notification-list-top-center-bottom: unset;
+
+    /* Top Right Position */
+    --notification-list-top-right-left: unset;
+    --notification-list-top-right-right: 0;
+    --notification-list-top-right-top: 0;
+    --notification-list-top-right-bottom: unset;
+
+    /* Bottom Position */
+    --notification-list-bottom-left: 0;
+    --notification-list-bottom-right: 0;
+    --notification-list-bottom-top: unset;
+    --notification-list-bottom-bottom: 0;
+
+    /* Bottom Left Position */
+    --notification-list-bottom-left-left: 0;
+    --notification-list-bottom-left-right: unset;
+    --notification-list-bottom-left-top: unset;
+    --notification-list-bottom-left-bottom: 0;
+
+    /* Bottom Center Position */
+    --notification-list-bottom-center-left: 50%;
+    --notification-list-bottom-center-transform: translateX(-50%);
+    --notification-list-bottom-center-right: unset;
+    --notification-list-bottom-center-top: unset;
+    --notification-list-bottom-center-bottom: 0;
+
+    /* Bottom Right Position */
+    --notification-list-bottom-right-left: unset;
+    --notification-list-bottom-right-right: 0;
+    --notification-list-bottom-right-top: unset;
+    --notification-list-bottom-right-bottom: 0;
+
+    /* Notification Styling */
+    --notification-padding: 1.4em 1em;
+    --notification-margin: 4px;
+    --notification-width: 100%;
+    --notification-overflow: hidden;
+    --notification-border-radius: 0.25rem;
+    --notification-background-color: var(--white);
+    --notification-box-shadow: 0 0 1.875rem rgba(0, 0, 0, 20%);
+    --notification-color: var(--dark);
+
+    /* Notification Title */
+    --notification-title-color: var(--black);
+    --notification-title-font-size: 1.2em;
+    --notification-title-font-weight: bold;
+    --notification-title-margin-bottom: unset;
+    --notification-title-first-letter-text-transform: capitalize;
+
+    /* Notification Message */
+    --notification-message-font-weight: normal;
+    --notification-message-font-size: 1em;
+    --notification-message-first-letter-text-transform: capitalize;
+
+    /* Notification Close Button */
+    --notification-close-button-color: var(--black);
+    --notification-close-button-background-color: var(--light);
+    --notification-close-button-border: 0;
+    --notification-close-button-border-radius: 0 0.25rem 0 0.25rem;
+    --notification-close-button-padding: 0.5rem;
+
+    /* Default Theme Specific Variables */
+    --default-notification-aside-icon-info-color: #4e94e8;
+    --default-notification-aside-icon-success-color: #6cb12d;
+    --default-notification-aside-icon-warning-color: #f3b433;
+    --default-notification-aside-icon-danger-color: #d34d3f;
+
+    /* Default Notification Center Positioning */
+    --default-notification-center-position: fixed;
+    --default-notification-center-left: 10px;
+    --default-notification-center-right: 10px;
+    --default-notification-center-top: 0;
+    --default-notification-center-bottom: 0;
+
+    /* Default Notification List Positioning */
+    --default-notification-list-position: absolute;
+    --default-notification-list-left: unset;
+    --default-notification-list-right: unset;
+    --default-notification-list-top: unset;
+    --default-notification-list-bottom: unset;
+
+    /* Default Top Position Variants */
+    --default-notification-list-top-left: 0;
+    --default-notification-list-top-right: 0;
+    --default-notification-list-top-top: 0;
+    --default-notification-list-top-bottom: unset;
+
+    /* Default Top Left Position */
+    --default-notification-list-top-left-left: 0;
+    --default-notification-list-top-left-right: unset;
+    --default-notification-list-top-left-top: 0;
+    --default-notification-list-top-left-bottom: unset;
+
+    /* Default Top Center Position */
+    --default-notification-list-top-center-left: 50%;
+    --default-notification-list-top-center-transform: translateX(-50%);
+    --default-notification-list-top-center-right: unset;
+    --default-notification-list-top-center-top: 0;
+    --default-notification-list-top-center-bottom: unset;
+
+    /* Default Top Right Position */
+    --default-notification-list-top-right-left: unset;
+    --default-notification-list-top-right-right: 0;
+    --default-notification-list-top-right-top: 0;
+    --default-notification-list-top-right-bottom: unset;
+
+    /* Default Bottom Position */
+    --default-notification-list-bottom-left: 0;
+    --default-notification-list-bottom-right: 0;
+    --default-notification-list-bottom-top: unset;
+    --default-notification-list-bottom-bottom: 0;
+
+    /* Default Bottom Left Position */
+    --default-notification-list-bottom-left-left: 0;
+    --default-notification-list-bottom-left-right: unset;
+    --default-notification-list-bottom-left-top: unset;
+    --default-notification-list-bottom-left-bottom: 0;
+
+    /* Default Bottom Center Position */
+    --default-notification-list-bottom-center-left: 50%;
+    --default-notification-list-bottom-center-transform: translateX(-50%);
+    --default-notification-list-bottom-center-right: unset;
+    --default-notification-list-bottom-center-top: unset;
+    --default-notification-list-bottom-center-bottom: 0;
+
+    /* Default Bottom Right Position */
+    --default-notification-list-bottom-right-left: unset;
+    --default-notification-list-bottom-right-right: 0;
+    --default-notification-list-bottom-right-top: unset;
+    --default-notification-list-bottom-right-bottom: 0;
+
+    /* Default Notification Styling */
+    --default-notification-padding: 1.2rem 1em;
+    --default-notification-margin: 0 0 0 0;
+    --default-notification-width: 100%;
+    --default-notification-overflow: hidden;
+    --default-notification-border: none;
+    --default-notification-border-radius: 0.25rem;
+    --default-notification-background-color: var(--white);
+    --default-notification-box-shadow: 0 0 1.875rem rgba(0, 0, 0, 20%);
+    --default-notification-color: var(--dark);
+
+    /* Default Notification Margins */
+    --default-notification-list-top-notification-margin-top: 10px;
+    --default-notification-list-top-notification-margin-bottom: 4px;
+    --default-notification-list-bottom-notification-margin-bottom: 10px;
+    --default-notification-list-bottom-notification-margin-top: 4px;
+
+    /* Default Notification Title */
+    --default-notification-title-color: var(--black);
+    --default-notification-title-font-size: 1rem;
+    --default-notification-title-font-weight: bold;
+    --default-notification-title-margin-bottom: unset;
+    --default-notification-title-first-letter-text-transform: capitalize;
+
+    /* Default Notification Message */
+    --default-notification-message-color: var(--dark);
+    --default-notification-message-font-weight: normal;
+    --default-notification-message-font-size: 0.9rem;
+    --default-notification-message-first-letter-text-transform: capitalize;
+
+    /* Default Notification Close Button */
+    --default-notification-close-button-color: var(--black);
+    --default-notification-close-button-background-color: var(--light);
+    --default-notification-close-button-border: 0;
+    --default-notification-close-button-border-radius: 0 0.25rem 0 0.25rem;
+    --default-notification-close-button-padding: 0.1rem 0.5rem;
+
+    /* Default Notification Redirect */
+    --default-notification-redirect-btn-variant: "primary";
+    --default-notification-redirect-btn-style: "default";
+
+    /* Default Notification Slim */
+    --default-notification-slim-padding: 1rem;
+    --default-notification-slim-aside-margin-right: 0.5rem;
+    --default-notification-slim-aside-size: 25px;
+    --default-notification-slim-title-font-size: 0.8rem;
+    --default-notification-slim-message-font-size: 0.7rem;
+    --default-notification-slim-close-button-padding: 0.2rem;
+    --default-notification-slim-close-button-height: 20px;
+
+    /* Default Notification Dark */
+    --default-notification-dark-background-color: var(--dark);
+    --default-notification-dark-color: var(--white);
+    --default-notification-dark-title-color: var(--white);
+    --default-notification-dark-message-color: var(--white);
+    --default-notification-dark-close-button-color: var(--white);
+    --default-notification-dark-close-button-background-color: var(--black);
+
+    /* Default Notification Default */
+    --default-notification-default-background-color: var(--white);
+}

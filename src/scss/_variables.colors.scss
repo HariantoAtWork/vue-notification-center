@@ -1,80 +1,75 @@
 /*------------------------------------*\
   #BOOTSTRAP OVERRIDE VARS (BS)
 \*------------------------------------*/
-$warning:                 orange;
-$info:                    rgb(75, 75, 190);
-$danger:                  #FF8888;
-$success:                 #76E78E;
+$warning: var(--warning);
+$info: var(--info);
+$danger: var(--danger);
+$success: var(--success);
 
 /**
  * These variables are needed for overriding default Bootstrap vars
  */
 
-$bs-primary:                #ffd600  !default;
-$bs-secondary:              #000000  !default;
-$bs-tertiary:               #008FF9 !default;
-$bs-quaternary:             #666666 !default;
+$bs-primary: var(--bs-primary);
+$bs-secondary: var(--bs-secondary);
+$bs-tertiary: var(--bs-tertiary);
+$bs-quaternary: var(--bs-quaternary);
 
-$bs-light:                  #f2f2f2 !default;
-$bs-dark:                   #222222 !default;
+$bs-light: var(--bs-light);
+$bs-dark: var(--bs-dark);
 
-$bs-white:                  #ffffff !default;
-$bs-black:                  #000000 !default;
+$bs-white: var(--bs-white);
+$bs-black: var(--bs-black);
 
 
 /*------------------------------------*\
   #BOOTSTRAP DEFAULT VARS
 \*------------------------------------*/
 
-$primary:                   $bs-primary;
-$secondary:                 $bs-secondary;
-$tertiary:                  $bs-tertiary;
-$quaternary:                $bs-quaternary;
+$primary: var(--primary);
+$secondary: var(--secondary);
+$tertiary: var(--tertiary);
+$quaternary: var(--quaternary);
 
-$light:                     $bs-light;
-$dark:                      $bs-dark;
+$light: var(--light);
+$dark: var(--dark);
 
-$white:                     $bs-white;
-$black:                     $bs-dark;
+$white: var(--white);
+$black: var(--black);
 
 
 
 /*------------------------------------*\
   #CUSTOM COLORS
 \*------------------------------------*/
-$gray-400: grey;
+$gray-400: var(--gray-400);
 
-$upcoming:               $gray-400 !default;
-$live:                   $primary !default;
-$live-text-color:        $black !default;
+$upcoming: var(--upcoming);
+$live: var(--live);
+$live-text-color: var(--live-text-color);
 
-$finished:               $gray-400 !default;
+$finished: var(--finished);
 
-$badge-online-color:     $primary !default;
-$badge-offline-color:    #de4040 !default;
+$badge-online-color: var(--badge-online-color);
+$badge-offline-color: var(--badge-offline-color);
 
-$rank-color:            #293133!default;
+$rank-color: var(--rank-color);
 
 // Set the theme colors
-$theme-colors: ();
-$theme-colors:
-    map-merge(
-    (
-        "primary":      $primary,
-        "secondary":    $secondary,
-        "tertiary":     $tertiary,
-        "quaternary":   $quaternary,
-        "success":      $success,
-        "info":         $info,
-        "warning":      $warning,
-        "danger":       $danger,
-        "light":        $light,
-        "dark":         $dark,
-        "white":        $white,
-        "black":        $black,
-        "upcoming":     $upcoming,
-        "live":         $live,
-        "finished":     $finished
-    ),
-  $theme-colors
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "quaternary": $quaternary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+  "white": $white,
+  "black": $black,
+  "upcoming": $upcoming,
+  "live": $live,
+  "finished": $finished
 );

@@ -1,17 +1,17 @@
 .notification-center {
-  position: $default-notification-center_position;
-  left: $default-notification-center_left;
-  right: $default-notification-center_right;
-  top: $default-notification-center_top;
-  bottom: $default-notification-center_bottom;
+  position: var(--default-notification-center-position);
+  left: var(--default-notification-center-left);
+  right: var(--default-notification-center-right);
+  top: var(--default-notification-center-top);
+  bottom: var(--default-notification-center-bottom);
   z-index: $modal-container-z-index + 1;
 
   &__notification-list {
-    position: $default-notification-center-notification-list_position;
-    left: $default-notification-center-notification-list_left;
-    right: $default-notification-center-notification-list_right;
-    top: $default-notification-center-notification-list_top;
-    bottom: $default-notification-center-notification-list_bottom;
+    position: var(--default-notification-list-position);
+    left: var(--default-notification-list-left);
+    right: var(--default-notification-list-right);
+    top: var(--default-notification-list-top);
+    bottom: var(--default-notification-list-bottom);
     // width: 100%;
 
     @media only screen and (min-device-width: 768px) {
@@ -31,67 +31,67 @@
     }
 
     &--top {
-      left: $default-notification-center-notification-list--top_left;
-      right: $default-notification-center-notification-list--top_right;
-      top: $default-notification-center-notification-list--top_top;
-      bottom: $default-notification-center-notification-list--top_bottom;
-      margin:$notification_margin;
+      left: var(--default-notification-list-top-left);
+      right: var(--default-notification-list-top-right);
+      top: var(--default-notification-list-top-top);
+      bottom: var(--default-notification-list-top-bottom);
+      margin: var(--notification-margin);
 
       @media (max-width: 767.98px) {
-        margin:$notification_margin * 2;
+        margin: calc(var(--notification-margin) * 2);
        }
     }
 
     &--top-left {
-      left: $default-notification-center-notification-list--top-left_left;
-      right: $default-notification-center-notification-list--top-left_right;
-      top: $default-notification-center-notification-list--top-left_top;
-      bottom: $default-notification-center-notification-list--top-left_bottom;
+      left: var(--default-notification-list-top-left-left);
+      right: var(--default-notification-list-top-left-right);
+      top: var(--default-notification-list-top-left-top);
+      bottom: var(--default-notification-list-top-left-bottom);
     }
 
     &--top-center {
-      left: $default-notification-center-notification-list--top-center_left;
-      transform: $default-notification-center-notification-list--top-center_transform;
-      right: $default-notification-center-notification-list--top-center_right;
-      top: $default-notification-center-notification-list--top-center_top;
-      bottom: $default-notification-center-notification-list--top-center_bottom;
+      left: var(--default-notification-list-top-center-left);
+      transform: var(--default-notification-list-top-center-transform);
+      right: var(--default-notification-list-top-center-right);
+      top: var(--default-notification-list-top-center-top);
+      bottom: var(--default-notification-list-top-center-bottom);
     }
 
     &--top-right {
-      left: $default-notification-center-notification-list--top-right_left;
-      right: $default-notification-center-notification-list--top-right_right;
-      top: $default-notification-center-notification-list--top-right_top;
-      bottom: $default-notification-center-notification-list--top-right_bottom;
+      left: var(--default-notification-list-top-right-left);
+      right: var(--default-notification-list-top-right-right);
+      top: var(--default-notification-list-top-right-top);
+      bottom: var(--default-notification-list-top-right-bottom);
     }
 
     &--bottom {
-      left: $default-notification-center-notification-list--bottom_left;
-      right: $default-notification-center-notification-list--bottom_right;
-      top: $default-notification-center-notification-list--bottom_top;
-      bottom: $default-notification-center-notification-list--bottom_bottom;
+      left: var(--default-notification-list-bottom-left);
+      right: var(--default-notification-list-bottom-right);
+      top: var(--default-notification-list-bottom-top);
+      bottom: var(--default-notification-list-bottom-bottom);
     }
 
     &--bottom-left {
-      left: $default-notification-center-notification-list--bottom-left_left;
-      right: $default-notification-center-notification-list--bottom-left_right;
-      top: $default-notification-center-notification-list--bottom-left_top;
-      bottom: $default-notification-center-notification-list--bottom-left_bottom;
+      left: var(--default-notification-list-bottom-left-left);
+      right: var(--default-notification-list-bottom-left-right);
+      top: var(--default-notification-list-bottom-left-top);
+      bottom: var(--default-notification-list-bottom-left-bottom);
       // padding-bottom: 4rem;
     }
 
     &--bottom-center {
-      left: $default-notification-center-notification-list--bottom-center_left;
-      transform: $default-notification-center-notification-list--bottom-center_transform;
-      right: $default-notification-center-notification-list--bottom-center_right;
-      top: $default-notification-center-notification-list--bottom-center_top;
-      bottom: $default-notification-center-notification-list--bottom-center_bottom;
+      left: var(--default-notification-list-bottom-center-left);
+      transform: var(--default-notification-list-bottom-center-transform);
+      right: var(--default-notification-list-bottom-center-right);
+      top: var(--default-notification-list-bottom-center-top);
+      bottom: var(--default-notification-list-bottom-center-bottom);
     }
 
     &--bottom-right {
-      left: $default-notification-center-notification-list--bottom-right_left;
-      right: $default-notification-center-notification-list--bottom-right_right;
-      top: $default-notification-center-notification-list--bottom-right_top;
-      bottom: $default-notification-center-notification-list--bottom-right_bottom;
+      left: var(--default-notification-list-bottom-right-left);
+      right: var(--default-notification-list-bottom-right-right);
+      top: var(--default-notification-list-bottom-right-top);
+      bottom: var(--default-notification-list-bottom-right-bottom);
     }
 
     &--top,
@@ -99,9 +99,9 @@
     &--top-center,
     &--top-right {
       .notification {
-        margin-bottom: $default-notification-center-notification-list--top-notification_margin-bottom;
+        margin-bottom: var(--default-notification-list-top-notification-margin-bottom);
         &:first-child {
-          margin-top: $default-notification-center-notification-list--top-notification_margin-top;
+          margin-top: var(--default-notification-list-top-notification-margin-top);
         }
       }
     }
@@ -111,9 +111,9 @@
     &--bottom-center,
     &--bottom-right {
       .notification {
-        margin-bottom: $default-notification-center-notification-list--bottom-notification_margin-top;
+        margin-bottom: var(--default-notification-list-bottom-notification-margin-top);
         &:last-child {
-          margin-bottom: $default-notification-center-notification-list--bottom-notification_margin-bottom;
+          margin-bottom: var(--default-notification-list-bottom-notification-margin-bottom);
         }
       }
     }
@@ -129,15 +129,15 @@
 }
 
 .notification {
-  padding: $default-notification_padding;
-  margin: $default-notification_margin;
-  width: $default-notification_width;
-  overflow: $default-notification_overflow;
-  border-radius: $default-notification_border-radius;
-  border: $default-notification_border;
-  background-color: $default-notification_background-color;
-  box-shadow: $default-notification_box-shadow;
-  color: $default-notification_color;
+  padding: var(--default-notification-padding);
+  margin: var(--default-notification-margin);
+  width: var(--default-notification-width);
+  overflow: var(--default-notification-overflow);
+  border-radius: var(--default-notification-border-radius);
+  border: var(--default-notification-border);
+  background-color: var(--default-notification-background-color);
+  box-shadow: var(--default-notification-box-shadow);
+  color: var(--default-notification-color);
   // Default - width: 290px
   width: 290px;
 
@@ -190,19 +190,19 @@
     }
 
     &--success {
-        background-color: set-alert-icon-color($default-notification-aside-icon-success-color);
+        background-color: set-alert-icon-color(var(--default-notification-aside-icon-success-color));
     }
 
     &--info {
-        background-color: set-alert-icon-color($default-notification-aside-icon-info-color);
+        background-color: set-alert-icon-color(var(--default-notification-aside-icon-info-color));
     }
 
     &--warning {
-        background-color: set-alert-icon-color($default-notification-aside-icon-warning-color);
+        background-color: set-alert-icon-color(var(--default-notification-aside-icon-warning-color));
     }
 
     &--danger {
-        background-color: set-alert-icon-color($default-notification-aside-icon-danger-color);
+        background-color: set-alert-icon-color(var(--default-notification-aside-icon-danger-color));
     }
 
     @media (max-width: 767.98px) {
@@ -214,13 +214,13 @@
   }
 
   &__title {
-    color: $default-notification-title_color;
-    font-size: $default-notification-title_font-size;
-    font-weight: $default-notification-title_font-weight;
+    color: var(--default-notification-title-color);
+    font-size: var(--default-notification-title-font-size);
+    font-weight: var(--default-notification-title-font-weight);
     margin-top: unset;
-    // margin-bottom: $default-notification-title_margin-bottom;
+    margin-bottom: var(--default-notification-title-margin-bottom);
     &::first-letter {
-      text-transform: $default-notification-title_first-letter-text-transform;
+      text-transform: var(--default-notification-title-first-letter-text-transform);
     }
 
     &:only-child {
@@ -240,13 +240,13 @@
 
   &__message {
     flex: 1;
-    color: $default-notification-message_color;
-    font-weight: $default-notification-message_font-weight;
-    font-size: $default-notification-message_font-size;
+    color: var(--default-notification-message-color);
+    font-weight: var(--default-notification-message-font-weight);
+    font-size: var(--default-notification-message-font-size);
     white-space: pre-wrap;
 
     &::first-letter {
-      text-transform: $default-notification-message_first-letter-text-transform;
+      text-transform: var(--default-notification-message-first-letter-text-transform);
     }
     &:last-child {
       margin-top: unset;
@@ -262,11 +262,11 @@
     }
   }
   &__close-button {
-    color: $default-notification-close-button_color;
-    background-color: $default-notification-close-button_background-color;
-    border: $default-notification-close-button_border;
-    border-radius: $default-notification-close-button_border-radius;
-    padding: $default-notification-close-button_padding;
+    color: var(--default-notification-close-button-color);
+    background-color: var(--default-notification-close-button-background-color);
+    border: var(--default-notification-close-button-border);
+    border-radius: var(--default-notification-close-button-border-radius);
+    padding: var(--default-notification-close-button-padding);
   }
 
   &__redirect {
@@ -285,33 +285,25 @@
   }
 
   &__slim {
-      padding: $default-notification-slim-padding;
+      padding: var(--default-notification-slim-padding);
 
       .notification__aside {
-        margin-right: $default-notification-slim-aside-margin-right;
-
-        .spinner {
-            height: $default-notification-slim-aside-size !important;
-            width: $default-notification-slim-aside-size !important;
-        }
-
-        .material-icons {
-            font-size: $default-notification-slim-aside-size;
-            margin: 0 auto;
-        }
+        margin-right: var(--default-notification-slim-aside-margin-right);
+        width: var(--default-notification-slim-aside-size);
+        height: var(--default-notification-slim-aside-size);
       }
 
       .notification__title {
-        font-size: $default-notification-slim-title-font-size;
+        font-size: var(--default-notification-slim-title-font-size);
       }
 
       .notification__message {
-        font-size: $default-notification-slim-message-font-size;
+        font-size: var(--default-notification-slim-message-font-size);
       }
 
       .notification__close-button {
-        padding: $default-notification-slim-close-button-padding;
-        height: $default-notification-slim-close-button-height;
+        padding: var(--default-notification-slim-close-button-padding);
+        height: var(--default-notification-slim-close-button-height);
         display: flex;
       }
 
@@ -339,7 +331,7 @@
     }
   }
   &--default {
-    background-color: $default-notification--default-background-color;
+    background-color: var(--default-notification-default-background-color);
     &__aside {
       i {
         // color: $gray-500;
@@ -367,19 +359,19 @@
   &--dark {
     .notification {
       &__close-button {
-        color: $default-notification_dark-close-button_color;
-        background-color: $default-notification_dark-close-button_background-color;
+        color: var(--default-notification-dark-close-button-color);
+        background-color: var(--default-notification-dark-close-button-background-color);
       }
       &__message {
-        color: $default-notification_dark-message_color;
+        color: var(--default-notification-dark-message-color);
       }
       &__title {
-        color: $default-notification_dark-title_color;
+        color: var(--default-notification-dark-title-color);
       }
     }
     &.notification {
-      background-color: $default-notification_dark_background-color;
-      color: $default-notification_dark_color;
+      background-color: var(--default-notification-dark-background-color);
+      color: var(--default-notification-dark-color);
     }
   }
 }
