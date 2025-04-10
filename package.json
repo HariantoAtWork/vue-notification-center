@@ -11,7 +11,10 @@
       "require": "./dist/vue-notification-center.umd.js",
       "types": "./dist/vue-notification-center.d.ts"
     },
-    "./dist/style.css": "./dist/vue-notification-center.css"
+    "./dist/style.css": "./dist/vue-notification-center.es.css",
+    "./lib/*": {
+      "import": "./src/lib/*.js"
+    }
   },
   "files": [
     "dist",
