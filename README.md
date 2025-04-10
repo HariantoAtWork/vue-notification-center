@@ -181,6 +181,135 @@ nc.addNotification({
 
 - `destroy`: Emitted when a notification is destroyed
 
+## Custom Elements
+
+The notification center supports various types of custom elements, allowing you to create rich, interactive notifications. Here are examples of how to use custom elements:
+
+### 1. Vue Options API Component
+
+```javascript
+// Create a notification with a Vue Options API component
+notificationCenter.methods.addNotification({
+  elements: [
+    {
+      template: `Hello {{ text }} world`,
+      data: () => ({
+        text: 'My'
+      })
+    }
+  ],
+  position: 'topRight',
+  options: {
+    timeDuration: null,
+    elementClass: 'notification--notice'
+  }
+})
+```
+
+### 2. HTML Template
+
+```javascript
+// Create a notification with an HTML template
+const createClonedFromTemplate = () => {
+  const template = document.createElement('template')
+  template.innerHTML = '<div>Hello <b>bold</b> world <strong>strong</strong></div>'
+  return template.content.cloneNode(true)
+}
+
+notificationCenter.methods.addNotification({
+  elements: [createClonedFromTemplate()],
+  position: 'topRight',
+  options: {
+    timeDuration: null
+  }
+})
+```
+
+### 3. Custom DOM Elements
+
+```javascript
+// Create a notification with custom DOM elements
+const CustomDOMButton = buttonText => {
+  const root = document.createElement('button')
+  const textNode = document.createTextNode(buttonText)
+  
+  root.onclick = event => {
+    root.innerHTML = 'Clicked'
+    console.log('Button clicked: ' + buttonText)
+    notification.destroy()
+  }
+  
+  root.classList.add('btn', 'btn-primary')
+  root.appendChild(textNode)
+  return root
+}
+
+const notification = notificationCenter.methods.addNotification({
+  elements: [CustomDOMButton('Click Me')],
+  position: 'topRight',
+  options: {
+    timeDuration: null
+  }
+})
+```
+
+### 4. Vue Component with Proxy
+
+```javascript
+// Create a notification with a Vue component using createProxy
+import { createProxy } from '@harianto/vue-notification-center/lib/createProxy'
+
+const proxy = createProxy({
+  data: () => ({
+    text: 'Proxy'
+  }),
+  template: `As the world {{text}} turns<button @click="onDestroy">Destroy</button>`,
+  methods: {
+    onDestroy() {
+      if (typeof this.destroy === 'function') this.destroy()
+    }
+  }
+})
+proxy.destroy = () => {
+  notification.destroy()
+}
+
+const notification = notificationCenter.methods.addNotification({
+  elements: [proxy.$el],
+  position: 'topRight',
+  options: {
+    timeDuration: null
+  }
+})
+```
+
+### 5. Combining Multiple Elements
+
+You can combine multiple element types in a single notification:
+
+```javascript
+const notification = notificationCenter.methods.addNotification({
+  elements: [
+    // Vue Options API component
+    {
+      template: `Hello {{ text }} world`,
+      data: () => ({ text: 'My' })
+    },
+    // HTML template
+    createClonedFromTemplate(),
+    // Custom DOM button
+    CustomDOMButton('CustomButton'),
+    // Vue component with proxy
+    proxy.$el
+  ],
+  position: 'topRight',
+  options: {
+    timeDuration: null,
+    elementClass: 'notification--notice'
+  }
+})
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
