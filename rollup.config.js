@@ -47,7 +47,7 @@ export default {
       globals: {
         // Map external dependencies to global variables
         vue: 'Vue',
-        // 'vue/dist/vue.esm-bundler': 'Vue',
+        'vue/dist/vue.esm-bundler': 'Vue',
       },
       banner, // Add banner comment to the output
       sourcemap: true, // Generate source maps for debugging
