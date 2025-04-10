@@ -45,6 +45,28 @@ yarn add @harianto/vue-notification-center
 pnpm add @harianto/vue-notification-center
 ```
 
+## Importing Styles
+
+To use the default styling for notifications, you need to import the CSS file:
+
+### Vue 3
+```javascript
+// In your main.js or App.vue
+import '@harianto/vue-notification-center/dist/style.css'
+```
+
+### Nuxt 3
+```javascript
+// In your nuxt.config.ts
+export default defineNuxtConfig({
+  css: [
+    '@harianto/vue-notification-center/dist/style.css'
+  ]
+})
+```
+
+You can also customize the appearance of notifications by overriding the default CSS classes.
+
 ## Usage
 
 ### Vue 3 Setup
