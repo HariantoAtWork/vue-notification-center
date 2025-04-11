@@ -104,128 +104,123 @@
 </template>
 
 <script>
-import Notification from './Notification.vue'
+  import Notification from './Notification.vue'
 
-import vDetectMobileView from '../directives/v-detect-mobile-view'
-import notificationCenter from '../notificationCenter'
+  import vDetectMobileView from '../directives/v-detect-mobile-view'
+  import notificationCenter from '../notificationCenter'
 
-const {
-  state: { notifications },
-  methods: { addNotification },
-  defaults: { notificationPosition }
-} = notificationCenter
+  const {
+    state: { notifications },
+    methods: { addNotification },
+    defaults: { notificationPosition }
+  } = notificationCenter
 
-export default {
-  name: 'NotificationCenter',
-  directives: {
-    detectMobileView: vDetectMobileView
-  },
-  components: {
-    Notification
-  },
-  data: () => ({
-    isMobile: false,
-    notifications
-  }),
-  computed: {
-    showNotifications() {
-      return this.notifications.filter(
-        notification =>
-          notification.options?.show &&
-          !notification.meta?.displayOnAlertCenterOnly
-      )
+  export default {
+    name: 'NotificationCenter',
+    directives: {
+      detectMobileView: vDetectMobileView
     },
-    topNotification() {
-      const positions = [
-        notificationPosition.TOPLEFT,
-        notificationPosition.TOPCENTER,
-        notificationPosition.TOPRIGHT
-      ]
-      return this.showNotifications
-        .slice()
-        .reverse()
-        .filter(notification => positions.includes(notification.position))
+    components: {
+      Notification
     },
-    topLeftNotification() {
-      return this.topNotification.filter(
-        notification => notification.position === notificationPosition.TOPLEFT
-      )
+    data: () => ({
+      isMobile: false,
+      notifications
+    }),
+    computed: {
+      showNotifications() {
+        return this.notifications.filter(
+          notification => notification.show && !notification.data?.displayOnAlertCenterOnly
+        )
+      },
+      topNotification() {
+        const positions = [
+          notificationPosition.TOPLEFT,
+          notificationPosition.TOPCENTER,
+          notificationPosition.TOPRIGHT
+        ]
+        return this.showNotifications
+          .slice()
+          .reverse()
+          .filter(notification => positions.includes(notification.position))
+      },
+      topLeftNotification() {
+        return this.topNotification.filter(
+          notification => notification.position === notificationPosition.TOPLEFT
+        )
+      },
+      topCenterNotification() {
+        return this.topNotification.filter(
+          notification => notification.position === notificationPosition.TOPCENTER
+        )
+      },
+      topRightNotification() {
+        return this.topNotification.filter(
+          notification => notification.position === notificationPosition.TOPRIGHT
+        )
+      },
+      bottomNotification() {
+        const positions = [
+          notificationPosition.BOTTOMLEFT,
+          notificationPosition.BOTTOMCENTER,
+          notificationPosition.BOTTOMRIGHT
+        ]
+        return this.showNotifications.filter(notification =>
+          positions.includes(notification.position)
+        )
+      },
+      bottomLeftNotification() {
+        return this.bottomNotification.filter(
+          notification => notification.position === notificationPosition.BOTTOMLEFT
+        )
+      },
+      bottomCenterNotification() {
+        return this.bottomNotification.filter(
+          notification => notification.position === notificationPosition.BOTTOMCENTER
+        )
+      },
+      bottomRightNotification() {
+        return this.bottomNotification.filter(
+          notification => notification.position === notificationPosition.BOTTOMRIGHT
+        )
+      }
     },
-    topCenterNotification() {
-      return this.topNotification.filter(
-        notification => notification.position === notificationPosition.TOPCENTER
-      )
-    },
-    topRightNotification() {
-      return this.topNotification.filter(
-        notification => notification.position === notificationPosition.TOPRIGHT
-      )
-    },
-    bottomNotification() {
-      const positions = [
-        notificationPosition.BOTTOMLEFT,
-        notificationPosition.BOTTOMCENTER,
-        notificationPosition.BOTTOMRIGHT
-      ]
-      return this.showNotifications.filter(notification =>
-        positions.includes(notification.position)
-      )
-    },
-    bottomLeftNotification() {
-      return this.bottomNotification.filter(
-        notification =>
-          notification.position === notificationPosition.BOTTOMLEFT
-      )
-    },
-    bottomCenterNotification() {
-      return this.bottomNotification.filter(
-        notification =>
-          notification.position === notificationPosition.BOTTOMCENTER
-      )
-    },
-    bottomRightNotification() {
-      return this.bottomNotification.filter(
-        notification =>
-          notification.position === notificationPosition.BOTTOMRIGHT
-      )
-    }
-  },
-  // Vue LifeCycle Hooks
-  methods: {
-    addNotification,
-    setMobileView(bool) {
-      this.isMobile = bool
+    // Vue LifeCycle Hooks
+    methods: {
+      addNotification,
+      setMobileView(bool) {
+        this.isMobile = bool
+      }
     }
   }
-}
 
-export { addNotification }
+  export { addNotification }
 </script>
 
 <style scoped lang="scss">
-.u-events {
-  &--none {
-    pointer-events: none;
-  }
-  &--all {
-    pointer-events: all;
-  }
-}
-
-.fade-list {
-  &-enter,
-  &-leave-to {
-    opacity: 0;
-  }
-
-  &-leave-active {
-    &:not(:only-child) {
-      position: absolute;
+  .u-events {
+    &--none {
+      pointer-events: none;
+    }
+    &--all {
+      pointer-events: all;
     }
   }
 
-  &-item {
-    transition: all 0.2s;
+  .fade-list {
+    &-enter,
+    &-leave-to {
+      opacity: 0;
+    }
+
+    &-leave-active {
+      &:not(:only-child) {
+        position: absolute;
+      }
+    }
+
+    &-item {
+      transition: all 0.2s;
+    }
   }
-}
 </style>

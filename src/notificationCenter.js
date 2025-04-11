@@ -16,7 +16,7 @@ const defaults = {
       SUCCESS: 'success',
       WARNING: 'warning',
       DANGER: 'danger',
-      ERROR: 'error',
+      ERROR: 'error'
     }
   },
   // #endregion notificationType
@@ -29,7 +29,7 @@ const defaults = {
       TOPRIGHT: 'topRight',
       BOTTOMLEFT: 'bottomLeft',
       BOTTOMCENTER: 'bottomCenter',
-      BOTTOMRIGHT: 'bottomRight',
+      BOTTOMRIGHT: 'bottomRight'
     }
   },
   // #endregion notificationPosition
@@ -44,17 +44,15 @@ const defaults = {
       elements: [],
       type: this.notificationType.DEFAULT,
       position: this.notificationPosition.BOTTOMLEFT,
-      options: {
-        show: false,
-        canClose: true,
-        showCloseButton: false,
-        timeStart: null, // Date object
-        timeDuration: 3e3,
-        elementClass: '', // Append CSS class name in the element, ex: `notification--notify`
-      },
-      meta: {}, // Empty Object: pass any property values
+      show: false,
+      disableClose: false,
+      showCloseButton: false,
+      timeStart: null, // Date object
+      timeDuration: 3e3,
+      elementClass: '', // Append CSS class name in the element, ex: `notification--notify`
+      data: {} // Empty Object: pass any property values
     }
-  },
+  }
   // #endregion defaultNotification
 }
 
@@ -64,17 +62,17 @@ const compare = {
       return Object.values(defaults.notificationType).includes(newValue)
         ? newValue
         : originalValue
-        ? originalValue
-        : defaults.notification.type
+          ? originalValue
+          : defaults.notification.type
     },
     position(originalValue, newValue) {
       return Object.values(defaults.notificationPosition).includes(newValue)
         ? newValue
         : originalValue
-        ? originalValue
-        : defaults.notification.position
-    },
-  },
+          ? originalValue
+          : defaults.notification.position
+    }
+  }
 }
 
 // Factory: createNotification
@@ -93,26 +91,25 @@ const createNotification = function (notification, { parentMethods }) {
   let timerId = null
 
   const now = new Date(),
-    { options } = notification,
-    timeStart = options.timeStart ? options.timeStart : now
+    timeStart = notification.timeStart ? notification.timeStart : now
 
   const timer = createTimer({
     timeStart,
-    timeDuration: options.timeDuration,
+    timeDuration: notification.timeDuration,
     onStartTimer() {
       // console.log('started!', notification.uuid);
-      options.show = true
+      notification.show = true
     },
     onEndTimer() {
       // console.log('ended!', notification.uuid);
-      if (options.timeDuration) actions.destroy()
-    },
+      if (notification.timeDuration) actions.destroy()
+    }
   })
 
   if (
     dayjs(now).isBetween(
       timeStart,
-      dayjs(timeStart).add(options.timeDuration, 'millisecond'),
+      dayjs(timeStart).add(notification.timeDuration, 'millisecond'),
       null,
       '[]'
     )
@@ -126,11 +123,11 @@ const createNotification = function (notification, { parentMethods }) {
 
   const actions = {
     toggleVisibility() {
-      options.show = !options.show
-      console.log({ show: options.show })
+      notification.show = !notification.show
+      console.log({ show: notification.show })
     },
     hide() {
-      options.show = false
+      notification.show = false
     },
     destroy() {
       actions.destroyEvents()
@@ -142,7 +139,7 @@ const createNotification = function (notification, { parentMethods }) {
       event.$emit('destroy', { notification })
       event.$destroy()
       if (typeof notification.onDestroy === 'function') notification.onDestroy()
-    },
+    }
   }
 
   return {
@@ -150,7 +147,7 @@ const createNotification = function (notification, { parentMethods }) {
     ...actions,
     $on,
     $off,
-    $emit,
+    $emit
   }
 }
 
@@ -158,7 +155,7 @@ const createNotification = function (notification, { parentMethods }) {
 const createNotificationCenter = function (notifications) {
   // STORE: state
   const state = reactive({
-    notifications: Array.isArray(notifications) ? notifications : [],
+    notifications: Array.isArray(notifications) ? notifications : []
   })
   // STORE: methods
   const methods = {
@@ -167,13 +164,11 @@ const createNotificationCenter = function (notifications) {
         const message = notification
         notification = {
           title: 'Message',
-          message,
+          message
         }
       }
       // const notice = reactive(new Notification(notification))
-      const notice = reactive(
-        createNotification(notification, { parentMethods: methods })
-      )
+      const notice = reactive(createNotification(notification, { parentMethods: methods }))
       state.notifications.unshift(notice)
       return notice
     },
@@ -182,21 +177,19 @@ const createNotificationCenter = function (notifications) {
     },
     removeNotificationByUuid(uuid) {
       const { notifications } = state
-      const foundIndex = notifications.findIndex(
-        (notification) => notification.uuid === uuid
-      )
+      const foundIndex = notifications.findIndex(notification => notification.uuid === uuid)
       if (foundIndex > -1) return notifications.splice(foundIndex, 1)
     },
     removeNotifications() {
       const { notifications } = state
       return notifications.splice(0, notifications.length)
-    },
+    }
   }
 
   return {
     state,
     methods,
-    ...methods,
+    ...methods
   }
 }
 
@@ -204,7 +197,7 @@ const notificationCenter = {
   ...createNotificationCenter(),
   createNotificationCenter,
   defaults,
-  dayjs,
+  dayjs
 }
 
 export default notificationCenter
