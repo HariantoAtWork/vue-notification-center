@@ -62,7 +62,7 @@
       timeDuration: null,
       elementClass: 'notice',
       showCloseButton: true,
-      disableClose: true,
+      // disableClose: true,
     })
   }
 

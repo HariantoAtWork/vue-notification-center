@@ -9,6 +9,10 @@
       <button
         v-if="notification?.showCloseButton"
         class="notification__close-button"
+        :class="{
+          'cursor-not-allowed': notification.disableClose,
+          'cursor-pointer': !notification.disableClose,
+        }"
         @click.stop="onCloseButton"
       >
         <i class="fa-solid fa-xmark" />
@@ -47,7 +51,7 @@
     computed: {
       addClasses() {
         const { type, elementClass = 'notice' } = this.notification
-        return `${elementClass} ${elementClass}--${type}`
+        return `${elementClass} ${elementClass}--${type} ${this.notification.disableClose ? 'cursor-not-allowed' : 'cursor-auto'}`
       },
     },
     // Methods
@@ -75,6 +79,17 @@
 </script>
 
 <style scoped lang="scss">
+  .cursor {
+    &-not-allowed {
+      cursor: not-allowed;
+    }
+    &-pointer {
+      cursor: pointer;
+    }
+    &-auto {
+      cursor: auto;
+    }
+  }
   .relative {
     position: relative;
   }
