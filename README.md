@@ -109,10 +109,8 @@ this.$notify({
   message: 'Operation completed successfully',
   type: 'success',
   position: 'topRight',
-  options: {
-    timeDuration: 3000, // 3 seconds
-    canClose: true
-  }
+  timeDuration: 3000, // 3 seconds
+  disableClose: false
 })
 
 // Using the provide/inject API
@@ -170,15 +168,13 @@ nc.addNotification({
   elements: array,       // Custom elements
   type: string,          // Notification type
   position: string,      // Position
-  options: {
-    show: boolean,       // Visibility state
-    canClose: boolean,   // Allow closing
-    showCloseButton: boolean,
-    timeStart: Date,     // Start time
-    timeDuration: number,// Duration in milliseconds
-    elementClass: string // Custom CSS class
-  },
-  meta: object          // Additional metadata
+  show: boolean,         // Visibility state
+  disableClose: boolean, // Prevent closing
+  showCloseButton: boolean,
+  timeStart: Date,       // Start time
+  timeDuration: number,  // Duration in milliseconds
+  elementClass: string,  // Custom CSS class
+  data: object           // Additional data (e.g., { displayOnAlertCenterOnly: true })
 }
 ```
 
@@ -220,10 +216,8 @@ notificationCenter.methods.addNotification({
     }
   ],
   position: 'topRight',
-  options: {
-    timeDuration: null,
-    elementClass: 'notification--notice'
-  }
+  timeDuration: null,
+  elementClass: 'notification--notice'
 })
 ```
 
@@ -240,9 +234,7 @@ const createClonedFromTemplate = () => {
 notificationCenter.methods.addNotification({
   elements: [createClonedFromTemplate()],
   position: 'topRight',
-  options: {
-    timeDuration: null
-  }
+  timeDuration: null
 })
 ```
 
@@ -268,9 +260,7 @@ const CustomDOMButton = buttonText => {
 const notification = notificationCenter.methods.addNotification({
   elements: [CustomDOMButton('Click Me')],
   position: 'topRight',
-  options: {
-    timeDuration: null
-  }
+  timeDuration: null
 })
 ```
 
@@ -298,9 +288,7 @@ proxy.destroy = () => {
 const notification = notificationCenter.methods.addNotification({
   elements: [proxy.$el],
   position: 'topRight',
-  options: {
-    timeDuration: null
-  }
+  timeDuration: null
 })
 ```
 
@@ -324,11 +312,33 @@ const notification = notificationCenter.methods.addNotification({
     proxy.$el
   ],
   position: 'topRight',
-  options: {
-    timeDuration: null,
-    elementClass: 'notification--notice'
+  timeDuration: null,
+  elementClass: 'notification--notice'
+})
+```
+
+## Alert Center
+
+The notification center includes an Alert Center component that can display notifications specifically marked for it. To make a notification appear only in the Alert Center, set the `displayOnAlertCenterOnly` property in the `data` object:
+
+```javascript
+// Create a notification that only appears in the Alert Center
+notificationCenter.methods.addNotification({
+  title: 'Alert',
+  message: 'This is an important alert',
+  type: 'warning',
+  data: {
+    displayOnAlertCenterOnly: true
   }
 })
+```
+
+To use the Alert Center, add the component to your template:
+
+```vue
+<template>
+  <AlertCenter />
+</template>
 ```
 
 ## Contributing
