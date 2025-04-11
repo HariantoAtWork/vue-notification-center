@@ -14,9 +14,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 // Read package.json for version and other metadata
-const pkg = JSON.parse(
-  readFileSync(resolvePath(__dirname, './package.json'), 'utf8')
-)
+const pkg = JSON.parse(readFileSync(resolvePath(__dirname, './package.json'), 'utf8'))
 
 // Create a banner comment for the output files
 const banner = `/*!
@@ -108,6 +106,10 @@ export default {
     terser({
       format: {
         comments: false, // Remove comments from the output
+      },
+      compress: {
+        drop_console: true, // Remove all console.* calls
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'], // Remove specific console methods
       },
     }),
   ],
