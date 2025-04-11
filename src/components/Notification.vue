@@ -9,7 +9,7 @@
       <button
         v-if="notification?.showCloseButton"
         class="notification__close-button"
-        @click="onClose"
+        @click.stop="onCloseButton"
       >
         <i class="fa-solid fa-xmark" />
       </button>
@@ -33,22 +33,22 @@
   export default {
     name: 'NotificationCenterNotice',
     directives: {
-      injectElements: vInjectElements
+      injectElements: vInjectElements,
     },
     props: {
       notification: {
         required: true,
         type: Object,
         default: () => ({
-          show: true
-        })
-      }
+          show: true,
+        }),
+      },
     },
     computed: {
       addClasses() {
         const { type, elementClass = 'notice' } = this.notification
         return `${elementClass} ${elementClass}--${type}`
-      }
+      },
     },
     // Methods
     methods: {
@@ -61,11 +61,16 @@
         // console.log('click: onClose')
         const { notification } = this
         if (notification.disableClose) return
-        if (!(notification.showCloseButton || notification.elements.length)) {
-          this.onDestroy()
-        }
-      }
-    }
+        if (notification.showCloseButton) return
+        if (Array.isArray(notification.elements) && notification.elements.length) return
+        this.onDestroy()
+      },
+      onCloseButton() {
+        const { notification } = this
+        if (notification.disableClose) return
+        this.onDestroy()
+      },
+    },
   }
 </script>
 

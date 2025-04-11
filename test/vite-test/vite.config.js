@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src'),
       '@vue-notification-center': resolve(__dirname, '../../dist/'),
-    },
-  },
+      '@lib': resolve(__dirname, '../../src/lib/')
+    }
+  }
 })

@@ -5,3 +5,5 @@ export const createProxy = (vueOjbject = { template: `<span>test</span>` }, prop
   const app = createApp(vueOjbject, props)
   return app.mount(template) // Proxy Object
 }
+
+export default createProxy
