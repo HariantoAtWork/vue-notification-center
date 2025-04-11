@@ -4,14 +4,14 @@
   "description": "Vue NotificationCenter",
   "type": "module",
   "main": "./dist/vue-notification-center.umd.js",
-  "module": "./dist/vue-notification-center.es.js",
+  "module": "./dist/vue-notification-center.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-notification-center.es.js",
+      "import": "./dist/vue-notification-center.esm.js",
       "require": "./dist/vue-notification-center.umd.js",
       "types": "./dist/vue-notification-center.d.ts"
     },
-    "./dist/style.css": "./dist/vue-notification-center.es.css",
+    "./dist/style.css": "./dist/vue-notification-center.esm.css",
     "./lib/*": {
       "import": "./src/lib/*.js"
     }
