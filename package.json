@@ -25,7 +25,9 @@
     "build:watch": "rollup -c --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "format": "prettier --write \"src/**/*.{js,vue,scss}\"",
+    "format:check": "prettier --check \"src/**/*.{js,vue,scss}\""
   },
   "repository": {
     "type": "git",
@@ -61,6 +63,7 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/test-utils": "^2.4.6",
     "jsdom": "^26.0.0",
+    "prettier": "^3.5.3",
     "rollup": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-vue": "^6.0.0",
