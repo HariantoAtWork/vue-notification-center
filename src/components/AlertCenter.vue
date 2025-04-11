@@ -23,82 +23,80 @@
 </template>
 
 <script>
-import Notification from './Notification.vue'
+  import Notification from './Notification.vue'
 
-import notificationCenter from '../notificationCenter'
-const { state } = notificationCenter
+  import notificationCenter from '../notificationCenter'
+  const { state } = notificationCenter
 
-export default {
-  name: 'AlertCenter',
-  components: {
-    Notification
-  },
-  computed: {
-    notifications: () => state.notifications,
-    showNotifications() {
-      return this.notifications.filter(
-        notification => notification.options?.show
-      )
+  export default {
+    name: 'AlertCenter',
+    components: {
+      Notification
     },
-    alertNotification() {
-      return this.showNotifications.filter(
-        notification => notification.meta?.displayOnAlertCenterOnly
-      )
-    }
-  },
-  watch: {
-    alertNotification(value, oldValue) {
-      if (value.length > oldValue.length) {
-        $(this.$el).modal('show')
-      } else if (!value.length) {
-        this.onCloseSelf()
+    computed: {
+      notifications: () => state.notifications,
+      showNotifications() {
+        return this.notifications.filter(notification => notification.show)
+      },
+      alertNotification() {
+        return this.showNotifications.filter(
+          notification => notification.data?.displayOnAlertCenterOnly
+        )
+      }
+    },
+    watch: {
+      alertNotification(value, oldValue) {
+        if (value.length > oldValue.length) {
+          $(this.$el).modal('show')
+        } else if (!value.length) {
+          this.onCloseSelf()
+        }
+      }
+    },
+    methods: {
+      onCloseSelf() {
+        $(this.$el).modal('hide')
       }
     }
-  },
-  methods: {
-    onCloseSelf() {
-      $(this.$el).modal('hide')
-    }
   }
-}
 </script>
 
 <style scoped lang="scss">
-.u-events {
-  &--none {
-    pointer-events: none;
-  }
-  &--all {
-    pointer-events: all;
-  }
-}
-
-.fade-list {
-  &-enter,
-  &-leave-to {
-    opacity: 0;
+  .u-events {
+    &--none {
+      pointer-events: none;
+    }
+    &--all {
+      pointer-events: all;
+    }
   }
 
-  &-leave-active {
-    position: absolute;
+  .fade-list {
+    &-enter,
+    &-leave-to {
+      opacity: 0;
+    }
+
+    &-leave-active {
+      position: absolute;
+    }
+
+    &-item {
+      transition: all 0.2s;
+    }
   }
 
-  &-item {
-    transition: all 0.2s;
+  .notification-center__notification-list--top {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    justify-content: center;
+    left: 40px;
+    right: 40px;
   }
-}
 
-.notification-center__notification-list--top {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  justify-content: center;
-  left: 40px;
-  right: 40px;
-}
-
-.notification-center__notification {
-  max-width: 600px;
-  width: 100%;
-}
+  .notification-center__notification {
+    max-width: 600px;
+    width: 100%;
+  }
 </style>

@@ -1,7 +1,7 @@
 $modal-container-z-index: 1;
 $default-header-heading-z-index: 2;
 $default-notification-redirect-btn-style: white;
-$border-radius-sm: .4em;
+$border-radius-sm: 0.4em;
 $white: white;
 $black: black;
 $light: rgb(220, 220, 220);
@@ -19,5 +19,5 @@ $dark: rgb(5, 5, 5);
 // @import "variables.borders";
 // @import "variables.header";
 // @import "variables.modal";
-@import "variables.notification-center";
-@import "notification-center";
+@import 'variables.notification-center';
+@import 'notification-center';

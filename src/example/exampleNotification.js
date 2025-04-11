@@ -70,20 +70,19 @@ const methods = {
     )
   },
   examplePositions(notification = {}) {
-    Object.values(createExamplePositionMethods(notificationPosition)).forEach(
-      fn =>
-        fn(
-          deepmerge(
-            {
-              options: {
-                // canClose: true,
-                // showCloseButton: true,
-                timeDuration: null
-              }
-            },
-            notification
-          )
+    Object.values(createExamplePositionMethods(notificationPosition)).forEach(fn =>
+      fn(
+        deepmerge(
+          {
+            options: {
+              // canClose: true,
+              // showCloseButton: true,
+              timeDuration: null
+            }
+          },
+          notification
         )
+      )
     )
   },
   exampleElements() {
@@ -98,8 +97,7 @@ const methods = {
     // Use HTMLElement template
     const createClonedFromTemplate = () => {
       const template = document.createElement('template')
-      template.innerHTML =
-        '<div>Nigga</div>Hello <b>bold</b> world <strong>strong</strong>'
+      template.innerHTML = '<div>Nigga</div>Hello <b>bold</b> world <strong>strong</strong>'
 
       // Get the content of the `template.content`
       return template.content.cloneNode(true) // Clone the content

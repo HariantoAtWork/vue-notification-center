@@ -86,9 +86,9 @@ app.mount('#app')
 Create a plugin file `plugins/notification-center.client.ts`:
 ```typescript
 import { defineNuxtPlugin } from '#app'
-import { plugin } from '@harianto/vue-notification-center'
+import NotificationCenter from '@harianto/vue-notification-center'
 
-export default defineNuxtPlugin(nuxtApp => nuxtApp.vueApp.use(plugin))
+export default defineNuxtPlugin(nuxtApp => nuxtApp.vueApp.use(NotificationCenter))
 ```
 
 ### Add the Component

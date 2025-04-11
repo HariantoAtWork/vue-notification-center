@@ -35,14 +35,17 @@
 
 <script setup>
 import { inject } from 'vue'
-import NC from '@vue-notification-center/vue-notification-center.es.js'
-const { notificationCenter: nc } = NC
+const nc = inject('nc')
 
 const showInfo = () => {
   nc.addNotification({
     title: 'Info Notification',
     message: 'This is an info notification',
     type: 'info',
+    timeDuration: null,
+    elementClass: 'notice',
+    showCloseButton: true,
+    disableClose: true,
   })
 }
 
@@ -51,6 +54,10 @@ const showSuccess = () => {
     title: 'Success Notification',
     message: 'This is a success notification',
     type: 'success',
+    timeDuration: null,
+    showCloseButton: true,
+    elementClass: 'notice',
+    // canClose: true,
   })
 }
 
@@ -59,6 +66,10 @@ const showWarning = () => {
     title: 'Warning Notification',
     message: 'This is a warning notification',
     type: 'warning',
+    timeDuration: null,
+    showCloseButton: true,
+    elementClass: 'notice',
+    canClose: true,
   })
 }
 
@@ -67,6 +78,11 @@ const showError = () => {
     title: 'Error Notification',
     message: 'This is an error notification',
     type: 'error',
+    timeDuration: null,
+    showCloseButton: true,
+    elementClass: 'notice',
+    canClose: true,
+    showCloseButton: true,
   })
 }
 
@@ -77,10 +93,8 @@ const showCustomDuration = (duration) => {
       duration === 0 ? 'not auto-close' : `close in ${duration / 1000} seconds`
     }`,
     type: 'info',
-    options: {
-      timeDuration: duration,
-      showCloseButton: true,
-    },
+    timeDuration: duration,
+    showCloseButton: true,
   })
 }
 
@@ -94,7 +108,21 @@ const showCustomPosition = (position) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+::v-deep(.notice) {
+  &.notice--info {
+    background-color: #3498db;
+  }
+  &.notice--success {
+    background-color: #2ecc71;
+  }
+  &.notice--warning {
+    background-color: #f1c40f;
+  }
+  &.notice--error {
+    background-color: #e74c3c;
+  }
+}
 .container {
   max-width: 800px;
   margin: 0 auto;

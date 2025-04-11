@@ -8,10 +8,13 @@ $spacing-lg: 4rem !default;
 $spacing-xl: 5rem !default;
 
 // Extends the spacings map with pre-defined spacings
-$spacers: map-merge((
-  xs: $spacing-xs,
-  sm: $spacing-sm,
-  md: $spacing-md,
-  lg: $spacing-lg,
-  xl: $spacing-xl
-), $spacers);
+$spacers: map-merge(
+  (
+    xs: $spacing-xs,
+    sm: $spacing-sm,
+    md: $spacing-md,
+    lg: $spacing-lg,
+    xl: $spacing-xl
+  ),
+  $spacers
+);

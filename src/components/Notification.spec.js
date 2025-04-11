@@ -4,7 +4,7 @@ import Notification from './Notification.vue'
 
 // Mock the v-inject-elements directive
 const mockDirective = {
-  mounted: () => {}, // Empty implementation for testing
+  mounted: () => {} // Empty implementation for testing
 }
 
 describe('Notification Component', () => {
@@ -18,15 +18,15 @@ describe('Notification Component', () => {
           elements: [], // Empty array to avoid forEach error
           options: {
             showCloseButton: true,
-            canClose: true,
-          },
-        },
+            canClose: true
+          }
+        }
       },
       global: {
         directives: {
-          'inject-elements': mockDirective,
-        },
-      },
+          'inject-elements': mockDirective
+        }
+      }
     })
 
     expect(wrapper.text()).toContain('Test Title')
@@ -45,16 +45,16 @@ describe('Notification Component', () => {
           elements: [], // Empty array to avoid forEach error
           options: {
             showCloseButton: true,
-            canClose: true,
+            canClose: true
           },
-          destroy: destroyMock,
-        },
+          destroy: destroyMock
+        }
       },
       global: {
         directives: {
-          'inject-elements': mockDirective,
-        },
-      },
+          'inject-elements': mockDirective
+        }
+      }
     })
 
     const closeButton = wrapper.find('.notification__close-button')

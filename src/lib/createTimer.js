@@ -37,18 +37,12 @@ const createTimer = function (data) {
     },
     // Events
     onStartTimer() {
-      const hasOnStartTimer = Object.prototype.hasOwnProperty.call(
-        data,
-        'onStartTimer'
-      )
+      const hasOnStartTimer = Object.prototype.hasOwnProperty.call(data, 'onStartTimer')
       if (hasOnStartTimer) data.onStartTimer()
     },
     onEndTimer() {
       methods.stopTimer()
-      const hasOnEndTimer = Object.prototype.hasOwnProperty.call(
-        data,
-        'onEndTimer'
-      )
+      const hasOnEndTimer = Object.prototype.hasOwnProperty.call(data, 'onEndTimer')
       if (hasOnEndTimer) data.onEndTimer()
     }
   }

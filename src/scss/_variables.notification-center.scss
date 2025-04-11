@@ -82,15 +82,15 @@ $notification-close-button_color: $black !default;
 $notification-close-button_background-color: $light !default;
 $notification-close-button_border: 0 !default;
 $notification-close-button_border-radius: 0 $border-radius-sm 0 $border-radius-sm !default;
-$notification-close-button_padding: .5rem !default;
+$notification-close-button_padding: 0.5rem !default;
 // ####### END DEFAULT
 
 // ####### SQUARES - $sq
 // NotificationCenter
-$default-notification-aside-icon-info-color:                 #4e94e8 !default;
-$default-notification-aside-icon-success-color:              #6cb12d !default;
-$default-notification-aside-icon-warning-color:              #f3b433 !default;
-$default-notification-aside-icon-danger-color:               #d34d3f !default;
+$default-notification-aside-icon-info-color: #4e94e8 !default;
+$default-notification-aside-icon-success-color: #6cb12d !default;
+$default-notification-aside-icon-warning-color: #f3b433 !default;
+$default-notification-aside-icon-danger-color: #d34d3f !default;
 
 $default-notification-center_position: fixed !default;
 $default-notification-center_left: 10px !default;
@@ -171,27 +171,26 @@ $default-notification-title_first-letter-text-transform: capitalize !default;
 // Notification__Message
 $default-notification-message_color: $dark !default;
 $default-notification-message_font-weight: normal !default;
-$default-notification-message_font-size: .9rem !default;
+$default-notification-message_font-size: 0.9rem !default;
 $default-notification-message_first-letter-text-transform: capitalize !default;
 // Notification__CloseButton
 $default-notification-close-button_color: $black !default;
 $default-notification-close-button_background-color: $light !default;
 $default-notification-close-button_border: 0 !default;
 $default-notification-close-button_border-radius: 0 $border-radius-sm 0 $border-radius-sm !default;
-$default-notification-close-button_padding: .1rem.5rem !default;
+$default-notification-close-button_padding: 0.1rem.5rem !default;
 // Notification__Redirect
 $default-notification-redirect-btn-variant: 'primary' !default;
 $default-notification-redirect-btn-style: 'default' !default;
 // Notification__Slim
 $default-notification-slim-padding: 1rem !default;
-$default-notification-slim-aside-margin-right: .5rem !default;
+$default-notification-slim-aside-margin-right: 0.5rem !default;
 $default-notification-slim-aside-size: 25px !default;
-$default-notification-slim-title-font-size: .8rem !default;
-$default-notification-slim-message-font-size: .7rem !default;
-$default-notification-slim-close-button-padding: .2rem !default;
+$default-notification-slim-title-font-size: 0.8rem !default;
+$default-notification-slim-message-font-size: 0.7rem !default;
+$default-notification-slim-close-button-padding: 0.2rem !default;
 $default-notification-slim-close-button-height: 20px !default;
 // ####### END SQUARES - $sq
-
 
 // Notification Dark extra variables
 $default-notification_dark_background-color: $dark !default;
@@ -201,7 +200,6 @@ $default-notification_dark-message_color: $white !default;
 $default-notification_dark-close-button_color: $white !default;
 $default-notification_dark-close-button_background-color: $black !default;
 // ####### END SQUARES - $sq dark
-
 
 // Notification -- modifier: .notification--default
 $default-notification--default-background-color: $white !default;

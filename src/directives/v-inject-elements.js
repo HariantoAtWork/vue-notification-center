@@ -3,11 +3,7 @@ import { createApp } from 'vue/dist/vue.esm-bundler'
 import log from '../helpers/log'
 let logText = ''
 const appendChild = (parentNode, childNode) => {
-  log(
-    `-- # constructor: ${childNode?.constructor?.name} (${
-      childNode instanceof HTMLElement
-    })`
-  )
+  log(`-- # constructor: ${childNode?.constructor?.name} (${childNode instanceof HTMLElement})`)
 
   switch (true) {
     case childNode instanceof HTMLTemplateElement:
@@ -15,9 +11,7 @@ const appendChild = (parentNode, childNode) => {
       logText += '.HTMLTemplateElement'
       log(logText)
       logText = ''
-      Array.from(childNode.childNodes).forEach(child =>
-        parentNode.appendChild(child)
-      )
+      Array.from(childNode.childNodes).forEach(child => parentNode.appendChild(child))
       break
 
     case childNode instanceof DocumentFragment ||
@@ -28,9 +22,7 @@ const appendChild = (parentNode, childNode) => {
       log(logText)
       logText = ''
       if (childNode?.parentNode?.childNodes) {
-        Array.from(childNode.parentNode.childNodes).forEach(child =>
-          parentNode.appendChild(child)
-        )
+        Array.from(childNode.parentNode.childNodes).forEach(child => parentNode.appendChild(child))
       } else {
         parentNode.appendChild(childNode)
       }

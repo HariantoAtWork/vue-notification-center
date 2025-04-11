@@ -39,8 +39,7 @@ const getDarkColor = color => {
 
 const getLightColor = color => {
   let lightColor = '#' + tinycolor(color).lighten(2.5).toHex()
-  if (tinycolor(lightColor).getLuminance() < 0.92)
-    return getLightColor(lightColor)
+  if (tinycolor(lightColor).getLuminance() < 0.92) return getLightColor(lightColor)
   if (tinycolor(lightColor).getLuminance() > 0.98)
     lightColor = '#' + tinycolor(lightColor).darken(2.5).toHex()
   return lightColor
