@@ -11,6 +11,7 @@ This document provides guidelines and instructions for developing the Vue Notifi
 ## Dependencies
 
 ### Core Dependencies
+
 - Vue.js: ^3.0.0 (peer dependency)
 - dayjs: ^1.11.13
 - deepmerge: ^4.3.1
@@ -18,6 +19,7 @@ This document provides guidelines and instructions for developing the Vue Notifi
 - uuid: ^11.1.0
 
 ### Development Dependencies
+
 - @rollup/plugin-commonjs: ^25.0.0
 - @rollup/plugin-node-resolve: ^15.0.0
 - @rollup/plugin-replace: ^6.0.2
@@ -32,12 +34,14 @@ This document provides guidelines and instructions for developing the Vue Notifi
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/HariantoAtWork/vue-notification-center.git
    cd vue-notification-center
    ```
 
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
@@ -73,10 +77,11 @@ vue-notification-center/
 The package uses Rollup for building. The build process generates:
 
 - UMD build: `dist/vue-notification-center.umd.js`
-- ESM build: `dist/vue-notification-center.es.js`
+- ESM build: `dist/vue-notification-center.esm.js`
 - CSS file: `dist/vue-notification-center.css`
 
 To build the package:
+
 ```bash
 pnpm run build
 ```
@@ -86,11 +91,13 @@ pnpm run build
 To test the package locally in another project:
 
 1. Build the package:
+
    ```bash
    pnpm run build
    ```
 
 2. Link the package:
+
    ```bash
    pnpm link --global
    ```
@@ -173,22 +180,27 @@ This project follows [Semantic Versioning](https://semver.org/):
 For bug fixes and minor improvements that don't add new features:
 
 1. Make your changes and commit them:
+
    ```bash
    git commit -m "fix: description of the bug fix"
    ```
 
 2. Update the version in package.json:
+
    ```bash
    pnpm version patch
    ```
+
    This will automatically increment the patch version (e.g., 1.0.0 → 1.0.1)
 
 3. Build the package:
+
    ```bash
    pnpm run build
    ```
 
 4. Publish to npm:
+
    ```bash
    npm publish
    ```
@@ -204,22 +216,27 @@ For bug fixes and minor improvements that don't add new features:
 For new features that are backward compatible:
 
 1. Make your changes and commit them:
+
    ```bash
    git commit -m "feat: description of the new feature"
    ```
 
 2. Update the version in package.json:
+
    ```bash
    pnpm version minor
    ```
+
    This will automatically increment the minor version (e.g., 1.0.1 → 1.1.0)
 
 3. Build the package:
+
    ```bash
    pnpm run build
    ```
 
 4. Publish to npm:
+
    ```bash
    npm publish
    ```
@@ -235,22 +252,27 @@ For new features that are backward compatible:
 For breaking changes that are not backward compatible:
 
 1. Make your changes and commit them:
+
    ```bash
    git commit -m "feat!: description of the breaking change"
    ```
 
 2. Update the version in package.json:
+
    ```bash
    pnpm version major
    ```
+
    This will automatically increment the major version (e.g., 1.1.0 → 2.0.0)
 
 3. Build the package:
+
    ```bash
    pnpm run build
    ```
 
 4. Publish to npm:
+
    ```bash
    npm publish
    ```
@@ -266,12 +288,15 @@ For breaking changes that are not backward compatible:
 For testing before a full release:
 
 1. Create a pre-release version:
+
    ```bash
    pnpm version prerelease --preid=beta
    ```
+
    This will create a version like 1.0.0-beta.0
 
 2. Build and publish:
+
    ```bash
    pnpm run build
    npm publish --tag beta
@@ -296,6 +321,7 @@ For testing before a full release:
 ### Common Issues
 
 1. **Build fails**
+
    - Check for syntax errors
    - Ensure all dependencies are installed
    - Check Rollup configuration
@@ -310,4 +336,4 @@ For testing before a full release:
 - [Vue 3 Documentation](https://v3.vuejs.org/)
 - [Nuxt 3 Documentation](https://nuxt.com/docs)
 - [Rollup Documentation](https://rollupjs.org/guide/en/)
-- [PNPM Documentation](https://pnpm.io/) 
+- [PNPM Documentation](https://pnpm.io/)
