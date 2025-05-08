@@ -23,6 +23,7 @@
   "scripts": {
     "build": "rollup -c",
     "build:watch": "rollup -c --watch",
+    "dev": "rollup -c --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepublishOnly": "pnpm run build",
